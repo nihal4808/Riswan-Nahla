@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,300..900;1,300..900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -25,32 +25,30 @@
             theme: {
                 extend: {
                     colors: {
-                        jet: '#090909',
-                        matte: '#121212',
-                        charcoal: '#1E1E1E',
-                        silver: '#C0C0C0',
-                        platinum: '#E5E4E2',
-                        graphite: '#4A4A4A'
+                        primary: '#F1EFEA',
+                        secondary: '#3E362E',
+                        highlight: '#C5A07E',
+                        lightgray: '#8C857E', 
                     },
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
                         montserrat: ['Montserrat', 'sans-serif'],
-                        amiri: ['Amiri', 'serif'], // for Arabic or elegant script
+                        amiri: ['Amiri', 'serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                        greatvibes: ['Great Vibes', 'cursive'],
                     },
                     animation: {
+                        'fade-in': 'fadeIn 2s ease-in-out',
                         'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'spin-slow': 'spin 15s linear infinite',
-                        'shine': 'shine 3s infinite linear',
                     },
                     keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
-                        },
-                        shine: {
-                            '0%': { backgroundPosition: '200% center' },
-                            '100%': { backgroundPosition: '-200% center' },
                         }
                     }
                 }
@@ -61,99 +59,53 @@
     <style>
         /* Base & Background */
         body {
-            background-color: #090909;
-            color: #F8F8F8;
+            background-color: #F1EFEA;
+            background-image: url('assets/embossed_floral_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #3E362E;
             overflow-x: hidden;
             font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Marble texture overlay */
-        .marble-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://www.transparenttextures.com/patterns/black-mamba.png'), radial-gradient(circle at center, #1E1E1E 0%, #090909 100%);
-            z-index: -2;
-            opacity: 0.8;
-        }
-
-        /* Particles */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            pointer-events: none;
+            position: relative;
         }
 
         /* Typography */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        .font-cinzel {
+        h1, h2, h3, h4, h5, .font-cinzel {
             font-family: 'Cinzel', serif;
         }
-
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-greatvibes {
+            font-family: 'Great Vibes', cursive;
+        }
         .arabic {
             font-family: 'Amiri', serif;
-            font-size: 2.5rem;
-            line-height: 1.5;
         }
 
-        /* Silver Gradients */
-        .text-silver-gradient {
-            background: linear-gradient(to right, #4A4A4A 0%, #E5E4E2 25%, #FFFFFF 50%, #C0C0C0 75%, #4A4A4A 100%);
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: shine 5s linear infinite;
-        }
-
-        .bg-silver-gradient {
-            background: linear-gradient(135deg, #E5E4E2 0%, #C0C0C0 50%, #4A4A4A 100%);
-        }
-
-        /* Glassmorphism */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(192, 192, 192, 0.15);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(192, 192, 192, 0.05);
-            border-radius: 16px;
-        }
-
-        .glass-card:hover {
-            border: 1px solid rgba(192, 192, 192, 0.3);
-            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(192, 192, 192, 0.1);
-            transform: translateY(-2px);
-            transition: all 0.4s ease;
-        }
-
-        /* Buttons */
+        /* Highlight Buttons (Rounded rectangles with soft gold outline) */
         .btn-luxury {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
             position: relative;
             background: transparent;
-            color: #E5E4E2;
-            border: 1px solid #C0C0C0;
+            color: #3E362E;
+            border: 1px solid #C5A07E;
             padding: 12px 32px;
-            font-family: 'Cinzel', serif;
+            font-family: 'Montserrat', sans-serif;
             letter-spacing: 2px;
             text-transform: uppercase;
             overflow: hidden;
             transition: all 0.5s ease;
-            backdrop-filter: blur(5px);
             cursor: pointer;
             z-index: 1;
+            font-size: 0.85rem;
+            border-radius: 30px;
         }
-
         .btn-luxury::before {
             content: '';
             position: absolute;
@@ -161,25 +113,26 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(229, 228, 226, 0.2), transparent);
+            background: rgba(197, 160, 126, 0.15);
             transition: all 0.5s ease;
             z-index: -1;
         }
-
         .btn-luxury:hover::before {
-            left: 100%;
+            left: 0;
         }
-
         .btn-luxury:hover {
-            background: rgba(192, 192, 192, 0.1);
-            box-shadow: 0 0 20px rgba(192, 192, 192, 0.3);
+            border-color: #3E362E;
         }
 
         /* Opening Screen */
         #opening-screen {
             position: fixed;
             inset: 0;
-            background: #090909;
+            background-color: #F1EFEA;
+            background-image: url('assets/embossed_floral_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: 50;
             display: flex;
             flex-direction: column;
@@ -187,426 +140,504 @@
             align-items: center;
             transition: opacity 1.5s ease, visibility 1.5s ease;
         }
-
-        .seal {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 2px solid #4A4A4A;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            margin-bottom: 3rem;
-            background: radial-gradient(circle, #1E1E1E 0%, #090909 100%);
-            box-shadow: 0 0 30px rgba(192, 192, 192, 0.1), inset 0 0 20px rgba(0, 0, 0, 0.8);
-        }
-
-        .seal::after {
-            content: '';
-            position: absolute;
-            inset: -5px;
-            border-radius: 50%;
-            border: 1px solid rgba(192, 192, 192, 0.3);
-            animation: spin-slow 15s linear infinite;
-        }
-
+        
         .seal-inner {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 1px dashed rgba(229, 228, 226, 0.5);
+            width: 140px;
+            height: 140px;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        .seal-text {
-            font-size: 3rem;
-            font-family: 'Cinzel', serif;
-            color: #E5E4E2;
-            text-shadow: 0 0 10px rgba(229, 228, 226, 0.5);
-        }
-
-        /* Countdown */
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .countdown-value {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            font-weight: 500;
-            background: linear-gradient(180deg, #FFFFFF 0%, #C0C0C0 50%, #4A4A4A 100%);
-            -webkit-background-clip: text;
-            color: transparent;
-            line-height: 1.2;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .countdown-label {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #C0C0C0;
-            margin-top: 0.5rem;
+            background: transparent;
         }
 
         /* Page Transitions */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: all 1s cubic-bezier(0.5, 0, 0, 1);
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .fade-in {
-            opacity: 0;
-            transition: opacity 1.5s ease;
+        /* Minimalist Gold Dividers */
+        .divider {
+            width: 100%;
+            max-width: 150px;
+            height: 1px;
+            background-color: #C5A07E;
+            margin: 3rem auto;
+            opacity: 0.6;
         }
 
-        .fade-in.active {
-            opacity: 1;
-        }
-
-        /* Soft Parallax Lines */
-        .line-vertical {
+        /* Arch Frame */
+        .arch-frame {
             position: absolute;
-            width: 1px;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(192, 192, 192, 0.1), transparent);
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            z-index: -1;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            height: 380px;
+            border: 1.5px solid rgba(197, 160, 126, 0.6);
+            border-top-left-radius: 140px;
+            border-top-right-radius: 140px;
+            pointer-events: none;
         }
+
+        /* Corner Florals */
+        .corner-floral {
+            position: absolute;
+            width: 140px;
+            pointer-events: none;
+            opacity: 0.95;
+        }
+        .corner-floral.top-left { top: 0; left: 0; }
+        .corner-floral.bottom-right { bottom: 0; right: 0; transform: rotate(180deg); }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(197, 160, 126, 0.5);
+            animation: floatParticle linear infinite;
+            pointer-events: none;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(0) scale(1); opacity: 0.4; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-80px) scale(0.5); opacity: 0; }
+        }
+
+        /* ===== REALISTIC BUTTERFLIES ===== */
+        .butterfly-container {
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 10;
+            transform-style: preserve-3d;
+        }
+
+        .butterfly-body {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 4px; height: 16px;
+            background: #2b2520;
+            border-radius: 10px;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        .wing {
+            position: absolute;
+            top: 50%;
+            width: 20px; height: 26px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+            filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.25));
+        }
+
+        .wing-left {
+            right: 50%;
+            transform-origin: right center;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg"><path d="M95,65 Q80,10 40,5 Q5,5 10,40 Q15,70 50,75 Q20,80 15,110 Q10,125 45,120 Q70,115 95,65" fill="%23C5A07E" stroke="%233E362E" stroke-width="4"/><path d="M85,60 Q75,20 45,15 Q25,20 25,40 Q30,60 50,65" fill="%23F0B8C5"/><path d="M50,78 Q30,85 28,105 Q30,115 45,112 Q65,105 85,65" fill="%23E8879A"/></svg>');
+            animation: flapLeftReal 0.15s ease-in-out infinite alternate;
+        }
+
+        .wing-right {
+            left: 50%;
+            transform-origin: left center;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg"><path d="M5,65 Q20,10 60,5 Q95,5 90,40 Q85,70 50,75 Q80,80 85,110 Q90,125 55,120 Q30,115 5,65" fill="%23C5A07E" stroke="%233E362E" stroke-width="4"/><path d="M15,60 Q25,20 55,15 Q75,20 75,40 Q70,60 50,65" fill="%23F0B8C5"/><path d="M50,78 Q70,85 72,105 Q70,115 55,112 Q35,105 15,65" fill="%23E8879A"/></svg>');
+            animation: flapRightReal 0.15s ease-in-out infinite alternate;
+        }
+
+        @keyframes flapLeftReal {
+            0% { transform: translateY(-50%) rotateY(0deg); }
+            100% { transform: translateY(-50%) rotateY(65deg); }
+        }
+        @keyframes flapRightReal {
+            0% { transform: translateY(-50%) rotateY(0deg); }
+            100% { transform: translateY(-50%) rotateY(-65deg); }
+        }
+
+
     </style>
 </head>
 
 <body class="antialiased">
 
     <!-- Audio Element (hidden) -->
-    <!-- Using a gentle ambient placeholder, the user can replace src with their preferred track -->
     <audio id="bg-music" loop>
-        <source
-            src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_0cbfa6c95a.mp3?filename=ambient-piano-amp-strings-10711.mp3"
-            type="audio/mpeg">
+        <source src="assets/audio.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="marble-bg"></div>
-    <canvas id="particles-js"></canvas>
+    <!-- Mute Button -->
+    <button id="mute-btn" class="fixed bottom-6 right-6 z-50 bg-white/40 text-secondary border border-white/60 w-12 h-12 rounded-full shadow-lg backdrop-blur-xl transition-all hover:scale-110 hidden flex items-center justify-center">
+        <i id="mute-icon" class="fas fa-volume-up text-lg"></i>
+    </button>
 
-    <!-- Opening Screen -->
-    <div id="opening-screen">
-        <div class="seal">
-            <div class="seal-inner">
-                <span class="seal-text text-silver-gradient">R&N</span>
-            </div>
+
+
+    <!-- Opening Screen (Image Button) -->
+    <div id="opening-screen" class="relative overflow-hidden flex flex-col items-center justify-center">
+        <div class="flex flex-col items-center justify-center gap-6 z-10 relative">
+            <img id="enter-btn" src="assets/IMG_7020.png" alt="Tap to Open" class="w-48 h-48 md:w-56 md:h-56 object-contain drop-shadow-lg opacity-100 hover:scale-105 transition-transform duration-500 cursor-pointer animate-pulse">
+            <p class="font-playfair italic text-secondary/70 text-sm tracking-widest mt-2 pointer-events-none">Tap to open your invitation</p>
         </div>
-        <button id="enter-btn" class="btn-luxury mt-8">
-            Enter Invitation
-        </button>
     </div>
 
-    <!-- Main Content (Hidden Initially) -->
-    <main id="main-content"
-        class="hidden opacity-0 transition-opacity duration-1000 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative">
-        <div class="line-vertical"></div>
 
+
+
+
+    <!-- Main Content -->
+    <main id="main-content" class="hidden opacity-0 transition-opacity duration-[1500ms] w-full max-w-lg mx-auto px-6 py-24 relative z-10">
+        
         <!-- Hero Section -->
-        <section class="min-h-screen flex flex-col justify-center items-center text-center reveal pt-10">
-            <div class="mb-10 animate-float">
-                <p class="arabic text-silver-gradient mb-4">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-                <p class="text-sm md:text-base text-silver tracking-wider font-light mb-2 uppercase">In the Name of
-                    Allah,</p>
-                <p class="text-sm md:text-base text-silver tracking-wider font-light uppercase">The Most Gracious, The
-                    Most Merciful</p>
-            </div>
-
-            <div class="glass-card p-10 md:p-16 w-full relative overflow-hidden">
-                <div
-                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-silver to-transparent opacity-50">
-                </div>
-
-                <p class="text-silver tracking-[0.2em] uppercase text-sm md:text-base mb-12 font-light">
-                    Together with our families,<br>
-                    we request the honour of your presence<br>
-                    at the wedding celebration.
+        <section class="min-h-[85vh] flex flex-col justify-between items-center text-center pb-12 pt-16 relative">
+            
+            <!-- Top Arabic Quote -->
+            <div class="animate-fade-in z-10 relative" style="animation-delay: 0.3s;">
+                <p class="font-amiri text-2xl md:text-3xl text-secondary mb-3 leading-loose">
+                    الحمدلله الذي بنعمته تتمُّ الصالحات
                 </p>
+                <p class="font-amiri text-2xl md:text-3xl text-secondary leading-loose">
+                    تم بحمدالله عقدُ قِران
+                </p>
+            </div>
 
-                <h1 class="font-cinzel text-5xl md:text-7xl lg:text-8xl mb-6 text-silver-gradient tracking-widest">
-                    RISWAN</h1>
-                <p class="font-cinzel text-2xl md:text-4xl text-silver mb-6">&</p>
-                <h1 class="font-cinzel text-5xl md:text-7xl lg:text-8xl mt-4 text-silver-gradient tracking-widest">NAHLA
-                </h1>
-
-                <div
-                    class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-silver to-transparent opacity-50">
+            <!-- Middle Monogram (Calligraphy Logo) -->
+            <div id="hero-monogram" class="flex flex-col items-center justify-center animate-fade-in my-16 relative z-10" style="animation-delay: 0.5s;">
+                <div class="relative inline-flex items-center justify-center">
+                    <img src="assets/calligraphy_logo.png" alt="Calligraphy Monogram" class="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-sm opacity-90">
+                    <!-- Invisible targets for butterflies -->
+                    <span id="riswan-r" class="absolute left-1/4 top-1/2 w-2 h-2 pointer-events-none"></span>
+                    <span id="nahla-l" class="absolute right-1/4 top-1/2 w-2 h-2 pointer-events-none"></span>
                 </div>
             </div>
+
+            <!-- Bottom Arabic Quote -->
+            <div class="animate-fade-in z-10 relative" style="animation-delay: 0.7s;">
+                <p class="font-amiri text-2xl md:text-3xl text-secondary mb-3 leading-loose">
+                    اللهم بارك لَهُما وبارك عليهما
+                </p>
+                <p class="font-amiri text-2xl md:text-3xl text-secondary leading-loose">
+                    واجمع بينهما في خير
+                </p>
+            </div>
+            
         </section>
 
-        <!-- Invitation Message -->
-        <section class="py-24 text-center reveal">
-            <div
-                class="w-12 h-12 mx-auto border border-silver/30 rotate-45 mb-12 flex justify-center items-center bg-jet/50 backdrop-blur-sm">
-                <div class="w-8 h-8 border border-silver/20"></div>
+        <!-- Invitation Message & Details (Matched to Screenshot) -->
+        <section class="py-16 flex flex-col items-center text-center reveal">
+            <div id="hero-bismillah" class="mb-10">
+                <p class="font-amiri text-2xl md:text-3xl text-secondary mb-4">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+                <p class="text-[10px] md:text-xs font-cinzel text-secondary tracking-[0.15em] leading-relaxed uppercase">
+                    In the Name of Allah,<br>The Most Gracious, The Most Merciful
+                </p>
             </div>
 
-            <p class="text-platinum text-lg italic font-light mb-8">With the blessings of Almighty Allah,</p>
-
-            <div class="my-8 tracking-widest">
-                <h3 class="text-xl md:text-2xl font-cinzel text-silver mb-2">Mr. O.M. Shareef</h3>
-                <p class="text-silver/70 text-sm mb-2">&</p>
-                <h3 class="text-xl md:text-2xl font-cinzel text-silver">Mrs. Mumthas Shareef</h3>
+            <div class="mb-6">
+                <h2 class="text-2xl md:text-3xl font-cinzel text-secondary tracking-[0.2em] mb-2 leading-tight">MUHAMMED<br>RISWAN</h2>
+                <p class="text-[9px] md:text-[10px] font-cinzel text-secondary/80 tracking-[0.15em] uppercase font-semibold">S/O O.M Shareef & Mumthas</p>
             </div>
 
-            <p
-                class="text-platinum/80 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-light mb-8 tracking-wide">
-                cordially invite you and your family<br>
-                to grace the wedding ceremony of their beloved son
+            <p class="text-2xl font-playfair text-secondary my-4 italic">&</p>
+
+            <div class="mb-8">
+                <h2 class="text-2xl md:text-3xl font-cinzel text-secondary tracking-[0.2em] mb-2">NAHLA</h2>
+                <p class="text-[9px] md:text-[10px] font-cinzel text-secondary/80 tracking-[0.15em] uppercase font-semibold">D/O Jamal & Sameera</p>
+            </div>
+
+            <!-- Minimalist Floral-style divider -->
+            <div class="flex items-center justify-center gap-3 my-8 opacity-60">
+                <i class="fas fa-seedling text-sm text-secondary"></i>
+                <div class="w-16 h-[1px] bg-secondary"></div>
+                <i class="fas fa-seedling text-sm text-secondary transform -scale-x-100"></i>
+            </div>
+
+            <p class="font-playfair italic text-secondary text-sm md:text-base mb-10 max-w-sm mx-auto leading-relaxed">
+                Together with their families invite you to<br>celebrate their wedding
             </p>
 
-            <div class="flex items-center justify-center gap-6 my-10">
-                <div class="h-px bg-silver/30 w-16 md:w-32"></div>
-                <h2 class="text-3xl font-cinzel text-silver-gradient tracking-widest">RISWAN</h2>
-                <div class="h-px bg-silver/30 w-16 md:w-32"></div>
-            </div>
-
-            <p class="text-platinum/80 text-sm md:text-base mb-10 font-light tracking-widest">with</p>
-
-            <div class="flex items-center justify-center gap-6 my-10">
-                <div class="h-px bg-silver/30 w-16 md:w-32"></div>
-                <h2 class="text-3xl font-cinzel text-silver-gradient tracking-widest">NAHLA</h2>
-                <div class="h-px bg-silver/30 w-16 md:w-32"></div>
-            </div>
-
-            <p
-                class="text-platinum/80 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-light mt-12 tracking-wide">
-                Your esteemed presence and prayers<br>
-                will make this occasion truly memorable.
+            <p class="text-lg md:text-xl font-cinzel text-secondary tracking-[0.3em] font-semibold mb-10">
+                26 . 07 . 2026
             </p>
+
+            <p class="font-playfair italic text-secondary text-sm md:text-base mb-6 leading-relaxed">
+                TMK Regency Vadakkekad,<br>Thrissur at 12 pm
+            </p>
+
+            <p class="font-playfair italic text-secondary text-sm md:text-base mb-12">
+                Reception To Follow
+            </p>
+
+            <p class="text-[9px] md:text-[10px] font-cinzel text-secondary tracking-[0.2em] uppercase mb-10">
+                With best compliments from Ridha & Razeen
+            </p>
+            
+            <a href="https://maps.app.goo.gl/placeholder" target="_blank" class="btn-luxury mt-4">
+                <i class="fas fa-location-arrow"></i>
+                View Venue
+            </a>
         </section>
 
-        <!-- Groom & Bride Details -->
-        <section class="py-20 grid md:grid-cols-2 gap-10 reveal">
-            <!-- Groom -->
-            <div
-                class="glass-card p-10 text-center flex flex-col justify-center items-center group relative overflow-hidden">
-                <div
-                    class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                </div>
-                <h3 class="text-sm tracking-[0.3em] text-silver mb-6 uppercase">The Groom</h3>
-                <h2 class="text-4xl font-cinzel text-silver-gradient mb-8 tracking-wider">RISWAN</h2>
-
-                <p class="text-xs tracking-widest text-silver/60 uppercase mb-2">Beloved Son of</p>
-                <p class="text-platinum font-cinzel mb-1 text-sm md:text-base">Mr. O.M. Shareef</p>
-                <p class="text-platinum font-cinzel mb-6 text-sm md:text-base">Mrs. Mumthas Shareef</p>
-
-                <p class="text-xs tracking-widest text-silver/60 uppercase mb-2">Grandson of</p>
-                <p class="text-platinum font-cinzel mb-6 text-sm md:text-base">Thalikassery Moidunny Haji (Late)
-                    <br><span class="text-silver/50 text-xs">and</span><br>
-                    Thekkepattayil Moidunny
-                </p>
-
-                <p class="text-xs tracking-widest text-silver/60 uppercase mb-2">Residence</p>
-                <p class="text-platinum/80 text-sm">Mundokkil House, Vylathur P.O.</p>
+        <!-- Calendar & Countdown Section -->
+        <section class="py-16 flex flex-col items-center justify-center relative reveal z-10 w-full max-w-sm mx-auto">
+            <!-- Top abstract heart line -->
+            <div class="w-full mb-8">
+                <svg viewBox="0 0 500 150" class="w-full h-20 text-highlight opacity-80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 30 100 Q 150 60 220 90 C 240 100 250 120 250 110 C 260 90 230 40 250 40 C 270 40 290 70 250 110 C 250 120 260 100 280 90 Q 350 60 470 100" />
+                </svg>
             </div>
 
-            <!-- Bride -->
-            <div
-                class="glass-card p-10 text-center flex flex-col justify-center items-center group relative overflow-hidden">
-                <div
-                    class="absolute inset-0 bg-gradient-to-bl from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                </div>
-                <h3 class="text-sm tracking-[0.3em] text-silver mb-6 uppercase">The Bride</h3>
-                <h2 class="text-4xl font-cinzel text-silver-gradient mb-8 tracking-wider">NAHLA</h2>
+            <!-- Month -->
+            <h3 class="font-cinzel text-xl md:text-2xl tracking-[0.4em] text-secondary mb-10 uppercase">July</h3>
 
-                <p class="text-xs tracking-widest text-silver/60 uppercase mb-2">Beloved Daughter of</p>
-                <p class="text-platinum font-cinzel mb-1 text-sm md:text-base">Mr. Jamal</p>
-                <p class="text-platinum font-cinzel mb-6 text-sm md:text-base">Mrs. Sameera Jamal</p>
-
-                <p class="text-xs tracking-widest text-silver/60 uppercase mb-2">Granddaughter of</p>
-                <p class="text-platinum font-cinzel mb-6 text-sm md:text-base">Pokkulangara Abdul Rahman Haji (Late)
-                    <br><span class="text-silver/50 text-xs">and</span><br>
-                    Attoorayil Kader Haji (Late)
-                </p>
-
-                <p class="text-xs tracking-widest text-silver/60 uppercase mb-2">Residence</p>
-                <p class="text-platinum/80 text-sm">Vettissery House, Punnayur P.O.</p>
+            <!-- Days Header -->
+            <div class="grid grid-cols-7 gap-x-2 w-full text-center mb-6">
+                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Thu</div>
+                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Fri</div>
+                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Sat</div>
+                <div class="font-playfair italic text-secondary font-semibold text-xs md:text-sm">Sun</div>
+                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Mon</div>
+                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Tue</div>
+                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Wed</div>
             </div>
-        </section>
 
-        <!-- Countdown Section -->
-        <section class="py-24 text-center reveal">
-            <h3 class="text-silver tracking-[0.3em] uppercase text-sm mb-12">The Big Day</h3>
-            <div class="glass-card p-8 md:p-12 max-w-3xl mx-auto flex flex-wrap justify-center gap-6 md:gap-12">
-                <div class="countdown-item">
-                    <div
-                        class="w-20 h-24 md:w-24 md:h-28 bg-jet/80 border border-silver/20 rounded-lg flex justify-center items-center shadow-[inset_0_0_15px_rgba(255,255,255,0.05)] relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1/2 bg-white/5 border-b border-silver/10"></div>
-                        <span id="days" class="countdown-value">00</span>
-                    </div>
-                    <span class="countdown-label">Days</span>
+            <!-- Dates -->
+            <div class="grid grid-cols-7 gap-x-2 w-full text-center relative z-10 mb-2">
+                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">23</span></div>
+                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">24</span></div>
+                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">25</span></div>
+                
+                <!-- Center Date: 26 (Sunday) with Dotted Heart -->
+                <div class="relative flex justify-center items-center h-12">
+                    <svg class="absolute w-14 h-14 md:w-16 md:h-16 text-highlight" style="top: -4px;" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 4" stroke-linecap="round">
+                        <path d="M 50 85 C 50 85 15 55 15 35 C 15 15 40 15 50 35 C 60 15 85 15 85 35 C 85 55 50 85 50 85 Z" />
+                    </svg>
+                    <span class="font-cinzel text-secondary font-bold text-lg md:text-xl relative z-10">26</span>
                 </div>
-                <div class="countdown-item">
-                    <div
-                        class="w-20 h-24 md:w-24 md:h-28 bg-jet/80 border border-silver/20 rounded-lg flex justify-center items-center shadow-[inset_0_0_15px_rgba(255,255,255,0.05)] relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1/2 bg-white/5 border-b border-silver/10"></div>
-                        <span id="hours" class="countdown-value">00</span>
-                    </div>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-item">
-                    <div
-                        class="w-20 h-24 md:w-24 md:h-28 bg-jet/80 border border-silver/20 rounded-lg flex justify-center items-center shadow-[inset_0_0_15px_rgba(255,255,255,0.05)] relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1/2 bg-white/5 border-b border-silver/10"></div>
-                        <span id="minutes" class="countdown-value">00</span>
-                    </div>
-                    <span class="countdown-label">Mins</span>
-                </div>
-                <div class="countdown-item">
-                    <div
-                        class="w-20 h-24 md:w-24 md:h-28 bg-jet/80 border border-silver/20 rounded-lg flex justify-center items-center shadow-[inset_0_0_15px_rgba(255,255,255,0.05)] relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1/2 bg-white/5 border-b border-silver/10"></div>
-                        <span id="seconds" class="countdown-value">00</span>
-                    </div>
-                    <span class="countdown-label">Secs</span>
-                </div>
+                
+                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">27</span></div>
+                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">28</span></div>
+                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">29</span></div>
             </div>
-        </section>
 
-        <!-- Wedding Details -->
-        <section class="py-20 reveal">
-            <div class="glass-card p-10 md:p-16 max-w-4xl mx-auto relative">
-                <div
-                    class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-silver/10 to-transparent pointer-events-none rounded-tr-xl">
-                </div>
-                <div
-                    class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-silver/10 to-transparent pointer-events-none rounded-bl-xl">
-                </div>
+            <!-- Hanging String (Dotted Line) -->
+            <div class="h-24 md:h-32 border-l border-dashed border-highlight/70 w-px mx-auto my-0"></div>
 
-                <h2 class="text-3xl md:text-4xl font-cinzel text-center text-silver-gradient mb-16 tracking-widest">
-                    WEDDING DETAILS</h2>
-
-                <div class="grid md:grid-cols-3 gap-10 text-center">
-                    <div class="flex flex-col items-center">
-                        <div
-                            class="w-16 h-16 rounded-full border border-silver/30 flex justify-center items-center mb-6 bg-jet/50">
-                            <i class="far fa-calendar-alt text-2xl text-silver"></i>
-                        </div>
-                        <h4 class="text-sm tracking-[0.2em] text-silver/60 uppercase mb-2">Date</h4>
-                        <p class="font-cinzel text-xl text-platinum">26 / 07 / 2026</p>
-                        <p class="text-silver/80 text-sm mt-1 uppercase tracking-widest">Sunday</p>
+            <!-- Countdown Timer Container -->
+            <div id="countdown-container" class="bg-white/40 backdrop-blur-xl rounded-3xl p-6 shadow-xl border border-white/60 w-full relative z-20">
+                <h4 class="font-cinzel tracking-[0.2em] text-highlight text-center text-[10px] uppercase font-bold mb-5">Time Until Forever</h4>
+                <div class="flex justify-between items-center text-center gap-1 md:gap-2">
+                    <div class="flex flex-col items-center flex-1">
+                        <span id="countdown-days" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
+                        <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Days</span>
                     </div>
-
-                    <div class="flex flex-col items-center">
-                        <div
-                            class="w-16 h-16 rounded-full border border-silver/30 flex justify-center items-center mb-6 bg-jet/50">
-                            <i class="far fa-clock text-2xl text-silver"></i>
-                        </div>
-                        <h4 class="text-sm tracking-[0.2em] text-silver/60 uppercase mb-2">Time</h4>
-                        <p class="font-cinzel text-xl text-platinum">11:30 AM</p>
-                        <p class="text-silver/80 text-sm mt-1 uppercase tracking-widest">Nikah Ceremony</p>
+                    <div class="font-cinzel text-xl md:text-2xl text-highlight/40 pb-3">:</div>
+                    <div class="flex flex-col items-center flex-1">
+                        <span id="countdown-hours" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
+                        <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Hrs</span>
                     </div>
-
-                    <div class="flex flex-col items-center">
-                        <div
-                            class="w-16 h-16 rounded-full border border-silver/30 flex justify-center items-center mb-6 bg-jet/50">
-                            <i class="fas fa-map-marker-alt text-2xl text-silver"></i>
-                        </div>
-                        <h4 class="text-sm tracking-[0.2em] text-silver/60 uppercase mb-2">Venue</h4>
-                        <p class="font-cinzel text-xl text-platinum">TMK Regency</p>
-                        <p class="text-silver/80 text-sm mt-1 uppercase tracking-widest">Vadakkekad</p>
+                    <div class="font-cinzel text-xl md:text-2xl text-highlight/40 pb-3">:</div>
+                    <div class="flex flex-col items-center flex-1">
+                        <span id="countdown-mins" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
+                        <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Min</span>
+                    </div>
+                    <div class="font-cinzel text-xl md:text-2xl text-highlight/40 pb-3">:</div>
+                    <div class="flex flex-col items-center flex-1">
+                        <span id="countdown-secs" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
+                        <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Sec</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Venue / Map -->
-        <section class="py-20 text-center reveal">
-            <div class="max-w-md mx-auto">
-                <div
-                    class="p-4 glass-card inline-block mb-10 group cursor-pointer hover:border-silver/40 transition-colors duration-500">
-                    <div class="border border-silver/20 p-2 bg-white rounded">
-                        <!-- Placeholder for QR Code, standard size 200x200 -->
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maps.app.goo.gl/placeholder"
-                            alt="Location QR Code"
-                            class="w-48 h-48 opacity-90 group-hover:opacity-100 transition-opacity">
-                    </div>
-                </div>
-                <div>
-                    <a href="#" target="_blank" class="btn-luxury inline-flex items-center gap-3 group">
-                        <i class="fas fa-map-marked-alt group-hover:animate-bounce"></i>
-                        Open Google Maps
-                    </a>
+        <!-- Groom & Bride Family Details -->
+        <section class="py-16 flex flex-col gap-12 max-w-lg mx-auto reveal">
+            
+            <!-- Section Heading -->
+            <div class="text-center mb-2">
+                <h2 class="font-greatvibes text-5xl md:text-6xl text-highlight mb-4 drop-shadow-sm">Our Families</h2>
+                <div class="flex items-center justify-center gap-3 opacity-60">
+                    <i class="fas fa-leaf text-[10px] text-secondary transform -scale-x-100"></i>
+                    <div class="w-12 h-[1px] bg-secondary"></div>
+                    <i class="fas fa-leaf text-[10px] text-secondary"></i>
                 </div>
             </div>
+
+            <!-- Groom Card -->
+            <div id="groom-card" class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-10 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
+                <!-- Subtle corner borders -->
+                <div class="absolute top-5 left-5 w-8 h-8 border-t border-l border-highlight/40 rounded-tl-2xl pointer-events-none"></div>
+                <div class="absolute top-5 right-5 w-8 h-8 border-t border-r border-highlight/40 rounded-tr-2xl pointer-events-none"></div>
+                <div class="absolute bottom-5 left-5 w-8 h-8 border-b border-l border-highlight/40 rounded-bl-2xl pointer-events-none"></div>
+                <div class="absolute bottom-5 right-5 w-8 h-8 border-b border-r border-highlight/40 rounded-br-2xl pointer-events-none"></div>
+
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <i class="fas fa-leaf text-[8px] text-highlight opacity-70 transform -scale-x-100"></i>
+                    <h3 class="font-cinzel text-[10px] tracking-[0.3em] font-bold text-highlight uppercase">The Groom</h3>
+                    <i class="fas fa-leaf text-[8px] text-highlight opacity-70"></i>
+                </div>
+                
+                <h2 class="font-greatvibes text-[5rem] text-highlight mb-6 drop-shadow-sm leading-none">Riswan</h2>
+                
+                <i class="far fa-heart text-[10px] text-highlight opacity-60 mb-6 block"></i>
+                
+                <p class="font-playfair text-secondary text-xs mb-8 tracking-wide">S/O Mr. O.M. Shareef & Mrs. Mumthas Shareef</p>
+                
+                <div class="flex flex-col items-center justify-center mb-6">
+                    <p class="font-playfair text-highlight text-xs tracking-widest mb-3">Grandson of</p>
+                    <div class="flex items-center justify-center gap-2 w-full max-w-[100px]">
+                        <div class="h-px bg-highlight/40 flex-1"></div>
+                        <i class="fas fa-star-of-life text-[6px] text-highlight/60"></i>
+                        <div class="h-px bg-highlight/40 flex-1"></div>
+                    </div>
+                </div>
+                
+                <p class="font-playfair text-secondary text-xs leading-relaxed mb-8 tracking-wide">Thalikassery Moidunny Haji (Late) &<br>Thekkepattayil Moidunny</p>
+                
+                <i class="far fa-heart text-[10px] text-highlight opacity-60 mb-6 block"></i>
+                
+                <p class="font-playfair italic text-secondary/70 text-[11px] tracking-wide">Mundokkil House, Vylathur P.O.</p>
+            </div>
+
+            <!-- Bride Card -->
+            <div id="bride-card" class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-10 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
+                <!-- Subtle corner borders -->
+                <div class="absolute top-5 left-5 w-8 h-8 border-t border-l border-highlight/40 rounded-tl-2xl pointer-events-none"></div>
+                <div class="absolute top-5 right-5 w-8 h-8 border-t border-r border-highlight/40 rounded-tr-2xl pointer-events-none"></div>
+                <div class="absolute bottom-5 left-5 w-8 h-8 border-b border-l border-highlight/40 rounded-bl-2xl pointer-events-none"></div>
+                <div class="absolute bottom-5 right-5 w-8 h-8 border-b border-r border-highlight/40 rounded-br-2xl pointer-events-none"></div>
+
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <i class="fas fa-leaf text-[8px] text-highlight opacity-70 transform -scale-x-100"></i>
+                    <h3 class="font-cinzel text-[10px] tracking-[0.3em] font-bold text-highlight uppercase">The Bride</h3>
+                    <i class="fas fa-leaf text-[8px] text-highlight opacity-70"></i>
+                </div>
+                
+                <h2 class="font-greatvibes text-[5rem] text-highlight mb-6 drop-shadow-sm leading-none">Nahla</h2>
+                
+                <i class="far fa-heart text-[10px] text-highlight opacity-60 mb-6 block"></i>
+                
+                <p class="font-playfair text-secondary text-xs mb-8 tracking-wide">D/O Mr. Jamal & Mrs. Sameera Jamal</p>
+                
+                <div class="flex flex-col items-center justify-center mb-6">
+                    <p class="font-playfair text-highlight text-xs tracking-widest mb-3">Granddaughter of</p>
+                    <div class="flex items-center justify-center gap-2 w-full max-w-[100px]">
+                        <div class="h-px bg-highlight/40 flex-1"></div>
+                        <i class="fas fa-star-of-life text-[6px] text-highlight/60"></i>
+                        <div class="h-px bg-highlight/40 flex-1"></div>
+                    </div>
+                </div>
+                
+                <p class="font-playfair text-secondary text-xs leading-relaxed mb-8 tracking-wide">Pokkulangara Abdul Rahman Haji (Late) &<br>Attoorayil Kader Haji (Late)</p>
+                
+                <i class="far fa-heart text-[10px] text-highlight opacity-60 mb-6 block"></i>
+                
+                <p class="font-playfair italic text-secondary/70 text-[11px] tracking-wide">Vettissery House, Punnayur P.O.</p>
+            </div>
         </section>
+
 
         <!-- Quran Verse -->
-        <section class="py-24 reveal">
-            <div class="glass-card p-10 md:p-16 text-center max-w-3xl mx-auto relative overflow-hidden">
-                <i class="fas fa-quote-left absolute top-8 left-8 text-4xl text-white/5"></i>
-                <i class="fas fa-quote-right absolute bottom-8 right-8 text-4xl text-white/5"></i>
-
-                <p class="text-platinum/90 italic font-light text-lg md:text-xl leading-relaxed mb-8 relative z-10">
-                    "And among His signs is that He created for you mates from among yourselves that you may find
-                    tranquility in them, and He placed between you affection and mercy."
-                </p>
-                <p class="text-silver tracking-[0.2em] text-sm font-cinzel">(Qur'an 30:21)</p>
-            </div>
-        </section>
-
-        <!-- Closing -->
-        <section class="py-24 text-center reveal pb-32">
-            <h2 class="font-cinzel text-3xl md:text-4xl text-silver mb-8 tracking-[0.3em]">THANK YOU</h2>
-            <p class="text-platinum/80 font-light max-w-xl mx-auto mb-16 italic text-lg">
-                "We look forward to celebrating this special day with your gracious presence."
+        <section class="py-16 reveal border-t border-highlight/20 text-center">
+            <p class="text-secondary/90 italic font-light text-sm md:text-base leading-relaxed mb-6 font-playfair px-4">
+                "And among His signs is that He created for you mates from among yourselves that you may find
+                tranquility in them, and He placed between you affection and mercy."
             </p>
-
-            <div class="mb-10">
-                <h3 class="font-cinzel text-3xl text-silver-gradient tracking-widest mb-2">RISWAN</h3>
-                <p class="font-cinzel text-silver mb-2">&</p>
-                <h3 class="font-cinzel text-3xl text-silver-gradient tracking-widest">NAHLA</h3>
-            </div>
-
-            <p class="text-silver/60 uppercase tracking-[0.3em] text-sm mt-12">With Love,</p>
-            <p class="font-cinzel text-platinum mt-4 tracking-widest">The Groom's Family</p>
+            <p class="text-lightgray tracking-[0.2em] text-[10px] font-playfair font-light">(Qur'an 30:21)</p>
         </section>
 
     </main>
 
     <!-- Scripts -->
     <script>
+        // Countdown Timer Logic
+        function initCountdown() {
+            const targetDate = new Date('2026-07-26T12:00:00').getTime();
+            const daysEl = document.getElementById('countdown-days');
+            const hoursEl = document.getElementById('countdown-hours');
+            const minsEl = document.getElementById('countdown-mins');
+            const secsEl = document.getElementById('countdown-secs');
+            const containerEl = document.getElementById('countdown-container');
+
+            function update() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                
+                if (distance < 0) {
+                    if (containerEl) {
+                        containerEl.innerHTML = '<div class="w-full text-center font-greatvibes text-3xl text-highlight mt-2">The Day is Here!</div>';
+                    }
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                if (daysEl) daysEl.innerText = days;
+                if (hoursEl) hoursEl.innerText = hours.toString().padStart(2, '0');
+                if (minsEl) minsEl.innerText = minutes.toString().padStart(2, '0');
+                if (secsEl) secsEl.innerText = seconds.toString().padStart(2, '0');
+            }
+            
+            setInterval(update, 1000);
+            update();
+        }
+        document.addEventListener('DOMContentLoaded', initCountdown);
+
         // Enter Button Logic
         document.getElementById('enter-btn').addEventListener('click', function () {
             const openingScreen = document.getElementById('opening-screen');
             const mainContent = document.getElementById('main-content');
             const bgMusic = document.getElementById('bg-music');
+            const muteBtn = document.getElementById('mute-btn');
 
             // Play music
-            bgMusic.play().catch(error => console.log("Audio play prevented by browser policy", error));
+            bgMusic.play().catch(e => {});
+            
+            // Show mute button
+            muteBtn.classList.remove('hidden');
 
             // Fade out opening screen
+            openingScreen.style.transition = 'opacity 1.5s ease';
             openingScreen.style.opacity = '0';
 
             setTimeout(() => {
                 openingScreen.style.display = 'none';
                 mainContent.classList.remove('hidden');
-
-                // Small delay before fading in content to ensure display:none is processed
                 setTimeout(() => {
                     mainContent.classList.remove('opacity-0');
                     initScrollReveal();
                 }, 100);
             }, 1500);
         });
+
+        // Mute Button Logic
+        document.getElementById('mute-btn').addEventListener('click', function () {
+            const bgMusic = document.getElementById('bg-music');
+            const muteIcon = document.getElementById('mute-icon');
+            
+            if (bgMusic.muted) {
+                bgMusic.muted = false;
+                muteIcon.classList.remove('fa-volume-mute');
+                muteIcon.classList.add('fa-volume-up');
+            } else {
+                bgMusic.muted = true;
+                muteIcon.classList.remove('fa-volume-up');
+                muteIcon.classList.add('fa-volume-mute');
+            }
+        });
+
 
         // Scroll Reveal Animation
         function initScrollReveal() {
@@ -628,87 +659,243 @@
             revealOnScroll(); // Trigger immediately for elements already in viewport
         }
 
-        // Countdown Timer
-        // Target Date: 26 July 2026 11:30 AM
-        const countDownDate = new Date("July 26, 2026 11:30:00").getTime();
+        // Realistic JS Butterflies Animation
+        function initButterflies() {
+            const numButterflies = 8; // Reduced amount for screen background
+            const butterflies = [];
 
-        const countdownFunction = setInterval(function () {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
+            // Fixed bounds for the screen
+            const docWidth = window.innerWidth;
+            const docHeight = window.innerHeight;
 
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("days").innerHTML = "00";
-                document.getElementById("hours").innerHTML = "00";
-                document.getElementById("minutes").innerHTML = "00";
-                document.getElementById("seconds").innerHTML = "00";
-                return;
+            for (let i = 0; i < numButterflies; i++) {
+                const b = document.createElement('div');
+                b.className = 'butterfly-container';
+                
+                const size = 0.5 + Math.random() * 0.8; // random scale 0.5 to 1.3
+                const flapSpeed = 0.08 + Math.random() * 0.1;
+
+                b.innerHTML = `
+                    <div class="butterfly-body"></div>
+                    <div class="wing wing-left" style="animation-duration: ${flapSpeed}s;"></div>
+                    <div class="wing wing-right" style="animation-duration: ${flapSpeed}s;"></div>
+                `;
+                document.body.appendChild(b);
+
+                // Start off-screen
+                const startX = Math.random() < 0.5 ? -150 - Math.random() * 100 : docWidth + 50 + Math.random() * 100;
+                const startY = Math.random() < 0.5 ? -150 - Math.random() * 100 : docHeight + 50 + Math.random() * 100;
+
+                butterflies.push({
+                    el: b,
+                    x: startX, // Start outside screen horizontally
+                    y: startY, // Start outside screen vertically
+                    vx: (Math.random() - 0.5) * 6,
+                    vy: (Math.random() - 0.5) * 6,
+                    tx: Math.random() * docWidth,
+                    ty: Math.random() * docHeight,
+                    size: size,
+                    state: 'flying',
+                    sitTimer: 0,
+                    targetId: null,
+                    targetOffsetX: 0,
+                    targetOffsetY: 0
+                });
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
-        }, 1000);
-
-        // Simple Particles Logic (Lightweight custom implementation without external dependency)
-        const canvas = document.getElementById('particles-js');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * -0.5 - 0.25;
-                this.opacity = Math.random() * 0.5 + 0.1;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.y < 0) {
-                    this.y = height;
-                    this.x = Math.random() * width;
+            function updateButterflies() {
+                const currentDocWidth = window.innerWidth;
+                const currentDocHeight = window.innerHeight;
+                
+                const riswanEl = document.getElementById('riswan-r');
+                const nahlaEl = document.getElementById('nahla-l');
+                const groomCardEl = document.getElementById('groom-card');
+                const brideCardEl = document.getElementById('bride-card');
+                
+                let riswanRect = null;
+                if (riswanEl && riswanEl.offsetParent !== null) {
+                    riswanRect = riswanEl.getBoundingClientRect();
+                    if (riswanRect.bottom < 0 || riswanRect.top > window.innerHeight) riswanRect = null;
                 }
-            }
-            draw() {
-                ctx.fillStyle = `rgba(192, 192, 192, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
 
-        for (let i = 0; i < 100; i++) {
-            particles.push(new Particle());
-        }
+                let nahlaRect = null;
+                if (nahlaEl && nahlaEl.offsetParent !== null) {
+                    nahlaRect = nahlaEl.getBoundingClientRect();
+                    if (nahlaRect.bottom < 0 || nahlaRect.top > window.innerHeight) nahlaRect = null;
+                }
 
-        function animateParticles() {
-            ctx.clearRect(0, 0, width, height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
+                let groomCardRect = null;
+                if (groomCardEl && groomCardEl.offsetParent !== null) {
+                    groomCardRect = groomCardEl.getBoundingClientRect();
+                    if (groomCardRect.bottom < 0 || groomCardRect.top > window.innerHeight) groomCardRect = null;
+                }
+
+                let brideCardRect = null;
+                if (brideCardEl && brideCardEl.offsetParent !== null) {
+                    brideCardRect = brideCardEl.getBoundingClientRect();
+                    if (brideCardRect.bottom < 0 || brideCardRect.top > window.innerHeight) brideCardRect = null;
+                }
+
+                let occupied = {
+                    'riswan-r': butterflies.some(b => b.targetId === 'riswan-r' && (b.state === 'targeting' || b.state === 'sitting')),
+                    'nahla-l': butterflies.some(b => b.targetId === 'nahla-l' && (b.state === 'targeting' || b.state === 'sitting')),
+                    'groom-card': butterflies.some(b => b.targetId === 'groom-card' && (b.state === 'targeting' || b.state === 'sitting')),
+                    'bride-card': butterflies.some(b => b.targetId === 'bride-card' && (b.state === 'targeting' || b.state === 'sitting'))
+                };
+
+                const rects = {
+                    'riswan-r': riswanRect,
+                    'nahla-l': nahlaRect,
+                    'groom-card': groomCardRect,
+                    'bride-card': brideCardRect
+                };
+
+                butterflies.forEach(b => {
+                    if (b.state === 'sitting') {
+                        let targetRect = b.targetId ? rects[b.targetId] : null;
+                        if (Date.now() > b.sitTimer || !targetRect) {
+                            b.state = 'flying';
+                            b.targetId = null;
+                            b.el.querySelectorAll('.wing').forEach(w => w.style.animationPlayState = 'running');
+                            b.vx = (Math.random() - 0.5) * 4;
+                            b.vy = -4; // Fly up when leaving
+                        } else {
+                            // Stick to the element even if user scrolls
+                            b.x = targetRect.left + b.targetOffsetX;
+                            b.y = targetRect.top + b.targetOffsetY;
+                            b.vx = 0;
+                            b.vy = 0;
+                        }
+                    } else if (b.state === 'targeting') {
+                        let targetRect = b.targetId ? rects[b.targetId] : null;
+                        if (!targetRect) {
+                            b.state = 'flying';
+                            b.targetId = null;
+                        } else {
+                            b.tx = targetRect.left + b.targetOffsetX;
+                            b.ty = targetRect.top + b.targetOffsetY;
+
+                            let dx = b.tx - b.x;
+                            let dy = b.ty - b.y;
+                            let dist = Math.sqrt(dx*dx + dy*dy);
+
+                            if (dist < 10) {
+                                // Landed!
+                                b.state = 'sitting';
+                                b.sitTimer = Date.now() + 3000 + Math.random() * 4000; // sit for 3-7 seconds
+                                b.vx = 0;
+                                b.vy = 0;
+                                b.el.querySelectorAll('.wing').forEach(w => w.style.animationPlayState = 'paused');
+                            } else {
+                                b.vx += (dx / dist) * 0.15;
+                                b.vy += (dy / dist) * 0.15;
+                                
+                                // Smoother wandering while targeting
+                                if (Math.random() < 0.1) {
+                                    b.vx += (Math.random() - 0.5) * 1.0;
+                                    b.vy += (Math.random() - 0.5) * 1.0;
+                                }
+
+                                const speed = Math.sqrt(b.vx*b.vx + b.vy*b.vy);
+                                if (speed > 4) {
+                                    b.vx = (b.vx / speed) * 4;
+                                    b.vy = (b.vy / speed) * 4;
+                                }
+                                b.x += b.vx;
+                                b.y += b.vy;
+                            }
+                        }
+                    } else {
+                        // Flying state
+                        const tryAssignTarget = (id, offsetX, offsetY) => {
+                            if (rects[id] && !occupied[id] && Math.random() < 0.003) {
+                                b.state = 'targeting';
+                                b.targetId = id;
+                                b.targetOffsetX = offsetX;
+                                b.targetOffsetY = offsetY;
+                                occupied[id] = true;
+                                return true;
+                            }
+                            return false;
+                        };
+
+                        if (!tryAssignTarget('riswan-r', rects['riswan-r'] ? rects['riswan-r'].width / 2 : 0, rects['riswan-r'] ? rects['riswan-r'].height / 2 : 0)) {
+                            if (!tryAssignTarget('nahla-l', rects['nahla-l'] ? rects['nahla-l'].width / 2 : 0, rects['nahla-l'] ? rects['nahla-l'].height / 2 : 0)) {
+                                if (!tryAssignTarget('groom-card', rects['groom-card'] ? Math.random() * rects['groom-card'].width : 0, rects['groom-card'] ? Math.random() * rects['groom-card'].height * 0.5 : 0)) {
+                                    tryAssignTarget('bride-card', rects['bride-card'] ? Math.random() * rects['bride-card'].width : 0, rects['bride-card'] ? Math.random() * rects['bride-card'].height * 0.5 : 0);
+                                }
+                            }
+                        }
+
+                        // Random erratic steering target update
+                        if (Math.random() < 0.02) {
+                            b.tx = Math.random() * currentDocWidth;
+                            b.ty = Math.random() * currentDocHeight;
+                        }
+
+                        // Calculate direction to target
+                        let dx = b.tx - b.x;
+                        let dy = b.ty - b.y;
+                        let dist = Math.sqrt(dx*dx + dy*dy);
+                        
+                        if (dist > 0) {
+                            b.vx += (dx / dist) * 0.05;
+                            b.vy += (dy / dist) * 0.05;
+                        }
+
+                        // Add smoother random wandering
+                        if (Math.random() < 0.1) {
+                            b.vx += (Math.random() - 0.5) * 1.5;
+                            b.vy += (Math.random() - 0.5) * 1.5;
+                        }
+
+                        // Limit speed
+                        const speed = Math.sqrt(b.vx*b.vx + b.vy*b.vy);
+                        if (speed > 4) {
+                            b.vx = (b.vx / speed) * 4;
+                            b.vy = (b.vy / speed) * 4;
+                        }
+
+                        b.x += b.vx;
+                        b.y += b.vy;
+
+                        // Wrap around screen
+                        if (b.x < -100) { b.x = currentDocWidth + 50; }
+                        if (b.x > currentDocWidth + 100) { b.x = -50; }
+                        if (b.y < -100) { b.y = currentDocHeight + 50; }
+                        if (b.y > currentDocHeight + 100) { b.y = -50; }
+                    }
+
+                    // Calculate target angle based on velocity, or keep current if sitting
+                    let targetAngle = b.angle || 0;
+                    if (b.state !== 'sitting' && (Math.abs(b.vx) > 0.1 || Math.abs(b.vy) > 0.1)) {
+                        targetAngle = Math.atan2(b.vy, b.vx) * (180 / Math.PI) + 90;
+                    } else if (b.state === 'sitting') {
+                        // Slowly turn upwards when sitting (looks natural for butterflies)
+                        targetAngle = 0; 
+                    }
+                    
+                    if (b.angle === undefined) {
+                        b.angle = targetAngle;
+                    }
+
+                    // Smooth angle transition to prevent flicking
+                    let angleDiff = targetAngle - b.angle;
+                    while (angleDiff > 180) angleDiff -= 360;
+                    while (angleDiff < -180) angleDiff += 360;
+                    
+                    b.angle += angleDiff * 0.1;
+
+                    b.el.style.transform = `translate(${b.x}px, ${b.y}px) rotate(${b.angle}deg) scale(${b.size})`;
+                });
+                requestAnimationFrame(updateButterflies);
             }
-            requestAnimationFrame(animateParticles);
+            
+            updateButterflies();
         }
-
-        animateParticles();
+        
+        // Initialize butterflies
+        initButterflies();
     </script>
 </body>
 
