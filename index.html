@@ -609,7 +609,7 @@
 
         <!-- Couple Polaroid -->
         <section class="pb-8 md:pb-16 w-full reveal flex justify-center z-10">
-            <img src="assets/polaroid.png" alt="Couple Polaroid" class="w-64 md:w-80 h-auto drop-shadow-2xl -rotate-2 hover:-translate-y-2 hover:rotate-0 transition-all duration-500 ease-out">
+            <img id="polaroid-card" src="assets/polaroid.png" alt="Couple Polaroid" class="w-64 md:w-80 h-auto drop-shadow-2xl -rotate-2 hover:-translate-y-2 hover:rotate-0 transition-all duration-500 ease-out">
         </section>
 
         <!-- Groom & Bride Family Details -->
@@ -938,6 +938,7 @@
                 const nahlaEl = document.getElementById('nahla-l');
                 const groomCardEl = document.getElementById('groom-card');
                 const brideCardEl = document.getElementById('bride-card');
+                const polaroidEl = document.getElementById('polaroid-card');
 
                 let riswanRect = null;
                 if (riswanEl && riswanEl.offsetParent !== null) {
@@ -963,18 +964,26 @@
                     if (brideCardRect.bottom < 0 || brideCardRect.top > window.innerHeight) brideCardRect = null;
                 }
 
+                let polaroidRect = null;
+                if (polaroidEl && polaroidEl.offsetParent !== null) {
+                    polaroidRect = polaroidEl.getBoundingClientRect();
+                    if (polaroidRect.bottom < 0 || polaroidRect.top > window.innerHeight) polaroidRect = null;
+                }
+
                 let occupied = {
                     'riswan-r': butterflies.some(b => b.targetId === 'riswan-r' && (b.state === 'targeting' || b.state === 'sitting')),
                     'nahla-l': butterflies.some(b => b.targetId === 'nahla-l' && (b.state === 'targeting' || b.state === 'sitting')),
                     'groom-card': butterflies.some(b => b.targetId === 'groom-card' && (b.state === 'targeting' || b.state === 'sitting')),
-                    'bride-card': butterflies.some(b => b.targetId === 'bride-card' && (b.state === 'targeting' || b.state === 'sitting'))
+                    'bride-card': butterflies.some(b => b.targetId === 'bride-card' && (b.state === 'targeting' || b.state === 'sitting')),
+                    'polaroid-card': butterflies.some(b => b.targetId === 'polaroid-card' && (b.state === 'targeting' || b.state === 'sitting'))
                 };
 
                 const rects = {
                     'riswan-r': riswanRect,
                     'nahla-l': nahlaRect,
                     'groom-card': groomCardRect,
-                    'bride-card': brideCardRect
+                    'bride-card': brideCardRect,
+                    'polaroid-card': polaroidRect
                 };
 
                 butterflies.forEach(b => {
@@ -1048,8 +1057,10 @@
 
                         if (!tryAssignTarget('riswan-r', rects['riswan-r'] ? rects['riswan-r'].width / 2 : 0, rects['riswan-r'] ? rects['riswan-r'].height / 2 : 0)) {
                             if (!tryAssignTarget('nahla-l', rects['nahla-l'] ? rects['nahla-l'].width / 2 : 0, rects['nahla-l'] ? rects['nahla-l'].height / 2 : 0)) {
-                                if (!tryAssignTarget('groom-card', rects['groom-card'] ? Math.random() * rects['groom-card'].width : 0, rects['groom-card'] ? Math.random() * rects['groom-card'].height * 0.5 : 0)) {
-                                    tryAssignTarget('bride-card', rects['bride-card'] ? Math.random() * rects['bride-card'].width : 0, rects['bride-card'] ? Math.random() * rects['bride-card'].height * 0.5 : 0);
+                                if (!tryAssignTarget('polaroid-card', rects['polaroid-card'] ? Math.random() * rects['polaroid-card'].width : 0, rects['polaroid-card'] ? Math.random() * rects['polaroid-card'].height : 0)) {
+                                    if (!tryAssignTarget('groom-card', rects['groom-card'] ? Math.random() * rects['groom-card'].width : 0, rects['groom-card'] ? Math.random() * rects['groom-card'].height * 0.5 : 0)) {
+                                        tryAssignTarget('bride-card', rects['bride-card'] ? Math.random() * rects['bride-card'].width : 0, rects['bride-card'] ? Math.random() * rects['bride-card'].height * 0.5 : 0);
+                                    }
                                 }
                             }
                         }
