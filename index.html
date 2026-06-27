@@ -930,6 +930,22 @@
                 });
             }
 
+            let pointerX = -1000;
+            let pointerY = -1000;
+
+            window.addEventListener('mousemove', (e) => {
+                pointerX = e.clientX;
+                pointerY = e.clientY;
+            });
+            window.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) {
+                    pointerX = e.touches[0].clientX;
+                    pointerY = e.touches[0].clientY;
+                }
+            }, { passive: true });
+            window.addEventListener('mouseleave', () => { pointerX = -1000; pointerY = -1000; });
+            window.addEventListener('touchend', () => { pointerX = -1000; pointerY = -1000; });
+
             function updateButterflies() {
                 const currentDocWidth = window.innerWidth;
                 const currentDocHeight = window.innerHeight;
@@ -987,6 +1003,23 @@
                 };
 
                 butterflies.forEach(b => {
+                    // Pointer Repulsion
+                    let dxPointer = b.x - pointerX;
+                    let dyPointer = b.y - pointerY;
+                    let distPointer = Math.sqrt(dxPointer * dxPointer + dyPointer * dyPointer);
+
+                    if (distPointer < 120) {
+                        // Spook the butterfly!
+                        if (b.state === 'sitting' || b.state === 'targeting') {
+                            b.state = 'flying';
+                            b.targetId = null;
+                            b.el.querySelectorAll('.wing').forEach(w => w.style.animationPlayState = 'running');
+                        }
+                        // Add strong velocity away from pointer
+                        b.vx += (dxPointer / distPointer) * 2.5;
+                        b.vy += (dyPointer / distPointer) * 2.5;
+                    }
+
                     if (b.state === 'sitting') {
                         let targetRect = b.targetId ? rects[b.targetId] : null;
                         if (Date.now() > b.sitTimer || !targetRect) {
