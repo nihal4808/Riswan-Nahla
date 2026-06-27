@@ -58,6 +58,10 @@
 
     <style>
         /* Base & Background */
+        html, body {
+            overscroll-behavior-y: none;
+        }
+
         body {
             background-color: #F1EFEA;
             color: #3E362E;
@@ -74,7 +78,7 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 100lvh; /* prevents background glitch when address bar hides */
             background-image: url('assets/embossed_floral_bg.jpg');
             background-size: cover;
             background-position: center;
