@@ -344,7 +344,8 @@
         </section>
 
         <!-- Invitation Message & Details (Matched to Screenshot) -->
-        <section class="py-16 flex flex-col items-center text-center reveal">
+        <section class="py-8 md:py-16 w-full reveal">
+            <div class="bg-white/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-xl border border-white/60 flex flex-col items-center text-center">
             <div id="hero-bismillah" class="mb-10">
                 <p class="font-amiri text-2xl md:text-3xl text-secondary mb-4">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
                 <p class="text-[10px] md:text-xs font-cinzel text-secondary tracking-[0.15em] leading-relaxed uppercase">
@@ -395,10 +396,12 @@
                 <i class="fas fa-location-arrow"></i>
                 View Venue
             </a>
+            </div>
         </section>
 
         <!-- Calendar & Countdown Section -->
-        <section class="py-16 flex flex-col items-center justify-center relative reveal z-10 w-full max-w-sm mx-auto">
+        <section class="py-8 md:py-16 w-full reveal z-10">
+            <div class="bg-white/40 backdrop-blur-xl rounded-3xl p-6 md:p-10 shadow-xl border border-white/60 flex flex-col items-center justify-center relative w-full">
             <!-- Top abstract heart line -->
             <div class="w-full mb-8">
                 <svg viewBox="0 0 500 150" class="w-full h-20 text-highlight opacity-80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -440,10 +443,10 @@
             </div>
 
             <!-- Hanging String (Dotted Line) -->
-            <div class="h-24 md:h-32 border-l border-dashed border-highlight/70 w-px mx-auto my-0"></div>
+            <div class="h-16 md:h-24 border-l border-dashed border-highlight/70 w-px mx-auto my-0"></div>
 
             <!-- Countdown Timer Container -->
-            <div id="countdown-container" class="bg-white/40 backdrop-blur-xl rounded-3xl p-6 shadow-xl border border-white/60 w-full relative z-20">
+            <div id="countdown-container" class="w-full relative z-20 mt-4">
                 <h4 class="font-cinzel tracking-[0.2em] text-highlight text-center text-[10px] uppercase font-bold mb-5">Time Until Forever</h4>
                 <div class="flex justify-between items-center text-center gap-1 md:gap-2">
                     <div class="flex flex-col items-center flex-1">
@@ -467,10 +470,11 @@
                     </div>
                 </div>
             </div>
+            </div>
         </section>
 
         <!-- Groom & Bride Family Details -->
-        <section class="py-16 flex flex-col gap-12 max-w-lg mx-auto reveal">
+        <section class="py-8 md:py-16 flex flex-col gap-8 md:gap-12 w-full reveal">
             
             <!-- Section Heading -->
             <div class="text-center mb-2">
@@ -483,7 +487,7 @@
             </div>
 
             <!-- Groom Card -->
-            <div id="groom-card" class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-10 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
+            <div id="groom-card" class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-6 md:p-10 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
                 <!-- Subtle corner borders -->
                 <div class="absolute top-5 left-5 w-8 h-8 border-t border-l border-highlight/40 rounded-tl-2xl pointer-events-none"></div>
                 <div class="absolute top-5 right-5 w-8 h-8 border-t border-r border-highlight/40 rounded-tr-2xl pointer-events-none"></div>
@@ -496,7 +500,7 @@
                     <i class="fas fa-leaf text-[8px] text-highlight opacity-70"></i>
                 </div>
                 
-                <h2 class="font-greatvibes text-[5rem] text-highlight mb-6 drop-shadow-sm leading-none">Riswan</h2>
+                <h2 class="font-greatvibes text-6xl md:text-[5rem] text-highlight mb-4 md:mb-6 drop-shadow-sm leading-none">Riswan</h2>
                 
                 <i class="far fa-heart text-[10px] text-highlight opacity-60 mb-6 block"></i>
                 
@@ -519,7 +523,7 @@
             </div>
 
             <!-- Bride Card -->
-            <div id="bride-card" class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-10 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
+            <div id="bride-card" class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-6 md:p-10 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
                 <!-- Subtle corner borders -->
                 <div class="absolute top-5 left-5 w-8 h-8 border-t border-l border-highlight/40 rounded-tl-2xl pointer-events-none"></div>
                 <div class="absolute top-5 right-5 w-8 h-8 border-t border-r border-highlight/40 rounded-tr-2xl pointer-events-none"></div>
@@ -532,7 +536,7 @@
                     <i class="fas fa-leaf text-[8px] text-highlight opacity-70"></i>
                 </div>
                 
-                <h2 class="font-greatvibes text-[5rem] text-highlight mb-6 drop-shadow-sm leading-none">Nahla</h2>
+                <h2 class="font-greatvibes text-6xl md:text-[5rem] text-highlight mb-4 md:mb-6 drop-shadow-sm leading-none">Nahla</h2>
                 
                 <i class="far fa-heart text-[10px] text-highlight opacity-60 mb-6 block"></i>
                 
@@ -557,12 +561,14 @@
 
 
         <!-- Quran Verse -->
-        <section class="py-16 reveal border-t border-highlight/20 text-center">
-            <p class="text-secondary/90 italic font-light text-sm md:text-base leading-relaxed mb-6 font-playfair px-4">
-                "And among His signs is that He created for you mates from among yourselves that you may find
-                tranquility in them, and He placed between you affection and mercy."
-            </p>
-            <p class="text-lightgray tracking-[0.2em] text-[10px] font-playfair font-light">(Qur'an 30:21)</p>
+        <section class="py-8 md:py-16 w-full reveal">
+            <div class="bg-white/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-xl border border-white/60 text-center">
+                <p class="text-secondary/90 italic font-light text-sm md:text-base leading-relaxed mb-6 font-playfair">
+                    "And among His signs is that He created for you mates from among yourselves that you may find
+                    tranquility in them, and He placed between you affection and mercy."
+                </p>
+                <p class="text-lightgray tracking-[0.2em] text-[10px] font-playfair font-light">(Qur'an 30:21)</p>
+            </div>
         </section>
 
     </main>
