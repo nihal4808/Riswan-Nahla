@@ -888,7 +888,7 @@
 
         // Realistic JS Butterflies Animation
         function initButterflies() {
-            const numButterflies = 8; // Reduced amount for screen background
+            const numButterflies = 25; // Increased amount for more interaction
             const butterflies = [];
 
             // Fixed bounds for the screen
@@ -946,6 +946,23 @@
             window.addEventListener('mouseleave', () => { pointerX = -1000; pointerY = -1000; });
             window.addEventListener('touchend', () => { pointerX = -1000; pointerY = -1000; });
 
+            let lastScrollY = window.scrollY;
+            window.addEventListener('scroll', () => {
+                if (Math.abs(window.scrollY - lastScrollY) > 10) {
+                    // Spook sitting butterflies when scrolling
+                    butterflies.forEach(b => {
+                        if (b.state === 'sitting' && Math.random() < 0.4) {
+                            b.state = 'flying';
+                            b.targetId = null;
+                            b.el.querySelectorAll('.wing').forEach(w => w.style.animationPlayState = 'running');
+                            b.vx = (Math.random() - 0.5) * 6;
+                            b.vy = -6; // fly upwards
+                        }
+                    });
+                    lastScrollY = window.scrollY;
+                }
+            }, { passive: true });
+
             function updateButterflies() {
                 const currentDocWidth = window.innerWidth;
                 const currentDocHeight = window.innerHeight;
@@ -987,11 +1004,19 @@
                 }
 
                 let occupied = {
-                    'riswan-r': butterflies.some(b => b.targetId === 'riswan-r' && (b.state === 'targeting' || b.state === 'sitting')),
-                    'nahla-l': butterflies.some(b => b.targetId === 'nahla-l' && (b.state === 'targeting' || b.state === 'sitting')),
-                    'groom-card': butterflies.some(b => b.targetId === 'groom-card' && (b.state === 'targeting' || b.state === 'sitting')),
-                    'bride-card': butterflies.some(b => b.targetId === 'bride-card' && (b.state === 'targeting' || b.state === 'sitting')),
-                    'polaroid-card': butterflies.some(b => b.targetId === 'polaroid-card' && (b.state === 'targeting' || b.state === 'sitting'))
+                    'riswan-r': butterflies.filter(b => b.targetId === 'riswan-r' && (b.state === 'targeting' || b.state === 'sitting')).length,
+                    'nahla-l': butterflies.filter(b => b.targetId === 'nahla-l' && (b.state === 'targeting' || b.state === 'sitting')).length,
+                    'groom-card': butterflies.filter(b => b.targetId === 'groom-card' && (b.state === 'targeting' || b.state === 'sitting')).length,
+                    'bride-card': butterflies.filter(b => b.targetId === 'bride-card' && (b.state === 'targeting' || b.state === 'sitting')).length,
+                    'polaroid-card': butterflies.filter(b => b.targetId === 'polaroid-card' && (b.state === 'targeting' || b.state === 'sitting')).length
+                };
+                
+                const maxOccupied = {
+                    'riswan-r': 1,
+                    'nahla-l': 1,
+                    'groom-card': 3,
+                    'bride-card': 3,
+                    'polaroid-card': 5
                 };
 
                 const rects = {
@@ -1077,12 +1102,12 @@
                     } else {
                         // Flying state
                         const tryAssignTarget = (id, offsetX, offsetY) => {
-                            if (rects[id] && !occupied[id] && Math.random() < 0.003) {
+                            if (rects[id] && occupied[id] < maxOccupied[id] && Math.random() < 0.008) {
                                 b.state = 'targeting';
                                 b.targetId = id;
                                 b.targetOffsetX = offsetX;
                                 b.targetOffsetY = offsetY;
-                                occupied[id] = true;
+                                occupied[id]++;
                                 return true;
                             }
                             return false;
