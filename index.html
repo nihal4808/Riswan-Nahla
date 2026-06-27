@@ -28,7 +28,7 @@
                         primary: '#F1EFEA',
                         secondary: '#3E362E',
                         highlight: '#C5A07E',
-                        lightgray: '#8C857E', 
+                        lightgray: '#8C857E',
                     },
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
@@ -82,15 +82,23 @@
         }
 
         /* Typography */
-        h1, h2, h3, h4, h5, .font-cinzel {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .font-cinzel {
             font-family: 'Cinzel', serif;
         }
+
         .font-playfair {
             font-family: 'Playfair Display', serif;
         }
+
         .font-greatvibes {
             font-family: 'Great Vibes', cursive;
         }
+
         .arabic {
             font-family: 'Amiri', serif;
         }
@@ -116,6 +124,7 @@
             font-size: 0.85rem;
             border-radius: 30px;
         }
+
         .btn-luxury::before {
             content: '';
             position: absolute;
@@ -127,9 +136,11 @@
             transition: all 0.5s ease;
             z-index: -1;
         }
+
         .btn-luxury:hover::before {
             left: 0;
         }
+
         .btn-luxury:hover {
             border-color: #3E362E;
         }
@@ -150,7 +161,7 @@
             align-items: center;
             transition: opacity 1.5s ease, visibility 1.5s ease;
         }
-        
+
         .seal-inner {
             width: 140px;
             height: 140px;
@@ -166,6 +177,7 @@
             transform: translateY(30px);
             transition: all 1s cubic-bezier(0.5, 0, 0, 1);
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -202,8 +214,17 @@
             pointer-events: none;
             opacity: 0.95;
         }
-        .corner-floral.top-left { top: 0; left: 0; }
-        .corner-floral.bottom-right { bottom: 0; right: 0; transform: rotate(180deg); }
+
+        .corner-floral.top-left {
+            top: 0;
+            left: 0;
+        }
+
+        .corner-floral.bottom-right {
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
 
         /* Floating Particles */
         .particle {
@@ -215,16 +236,28 @@
             animation: floatParticle linear infinite;
             pointer-events: none;
         }
+
         @keyframes floatParticle {
-            0% { transform: translateY(0) scale(1); opacity: 0.4; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-80px) scale(0.5); opacity: 0; }
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-80px) scale(0.5);
+                opacity: 0;
+            }
         }
 
         /* ===== REALISTIC BUTTERFLIES ===== */
         .butterfly-container {
             position: fixed;
-            top: 0; left: 0;
+            top: 0;
+            left: 0;
             pointer-events: none;
             z-index: 10;
             transform-style: preserve-3d;
@@ -232,24 +265,27 @@
 
         .butterfly-body {
             position: absolute;
-            top: 50%; left: 50%;
-            width: 4px; height: 16px;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 16px;
             background: #2b2520;
             border-radius: 10px;
             transform: translate(-50%, -50%);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             z-index: 2;
         }
 
         .wing {
             position: absolute;
             top: 50%;
-            width: 20px; height: 26px;
+            width: 20px;
+            height: 26px;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             opacity: 0.9;
-            filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.25));
+            filter: drop-shadow(0px 8px 6px rgba(0, 0, 0, 0.25));
         }
 
         .wing-left {
@@ -267,15 +303,24 @@
         }
 
         @keyframes flapLeftReal {
-            0% { transform: translateY(-50%) rotateY(0deg); }
-            100% { transform: translateY(-50%) rotateY(65deg); }
+            0% {
+                transform: translateY(-50%) rotateY(0deg);
+            }
+
+            100% {
+                transform: translateY(-50%) rotateY(65deg);
+            }
         }
+
         @keyframes flapRightReal {
-            0% { transform: translateY(-50%) rotateY(0deg); }
-            100% { transform: translateY(-50%) rotateY(-65deg); }
+            0% {
+                transform: translateY(-50%) rotateY(0deg);
+            }
+
+            100% {
+                transform: translateY(-50%) rotateY(-65deg);
+            }
         }
-
-
     </style>
 </head>
 
@@ -287,7 +332,8 @@
     </audio>
 
     <!-- Mute Button -->
-    <button id="mute-btn" class="fixed bottom-6 right-6 z-50 bg-white/40 text-secondary border border-white/60 w-12 h-12 rounded-full shadow-lg backdrop-blur-xl transition-all hover:scale-110 hidden flex items-center justify-center">
+    <button id="mute-btn"
+        class="fixed bottom-6 right-6 z-50 bg-white/40 text-secondary border border-white/60 w-12 h-12 rounded-full shadow-lg backdrop-blur-xl transition-all hover:scale-110 hidden flex items-center justify-center">
         <i id="mute-icon" class="fas fa-volume-up text-lg"></i>
     </button>
 
@@ -296,8 +342,10 @@
     <!-- Opening Screen (Image Button) -->
     <div id="opening-screen" class="relative overflow-hidden flex flex-col items-center justify-center">
         <div class="flex flex-col items-center justify-center gap-6 z-10 relative">
-            <img id="enter-btn" src="assets/IMG_7020.PNG" alt="Tap to Open" class="w-48 h-48 md:w-56 md:h-56 object-contain drop-shadow-lg opacity-100 hover:scale-105 transition-transform duration-500 cursor-pointer animate-pulse">
-            <p class="font-playfair italic text-secondary/70 text-sm tracking-widest mt-2 pointer-events-none">Tap to open your invitation</p>
+            <img id="enter-btn" src="assets/IMG_7020.PNG" alt="Tap to Open"
+                class="w-48 h-48 md:w-56 md:h-56 object-contain drop-shadow-lg opacity-100 hover:scale-105 transition-transform duration-500 cursor-pointer animate-pulse">
+            <p class="font-playfair italic text-secondary/70 text-sm tracking-widest mt-2 pointer-events-none">Tap to
+                open your invitation</p>
         </div>
     </div>
 
@@ -306,11 +354,12 @@
 
 
     <!-- Main Content -->
-    <main id="main-content" class="hidden opacity-0 transition-opacity duration-[1500ms] w-full max-w-lg mx-auto px-6 pb-24 pt-4 relative z-10">
-        
+    <main id="main-content"
+        class="hidden opacity-0 transition-opacity duration-[1500ms] w-full max-w-lg mx-auto px-6 pb-24 pt-4 relative z-10">
+
         <!-- Hero Section -->
         <section class="min-h-[85vh] flex flex-col justify-between items-center text-center pb-12 pt-4 relative">
-            
+
             <!-- Top Arabic Quote -->
             <div class="animate-fade-in z-10 relative" style="animation-delay: 0.3s;">
                 <p class="font-amiri text-2xl md:text-3xl text-secondary mb-3 leading-loose">
@@ -322,9 +371,12 @@
             </div>
 
             <!-- Middle Monogram (Calligraphy Logo) -->
-            <div id="hero-monogram" class="flex flex-col items-center justify-center animate-fade-in my-16 relative z-10" style="animation-delay: 0.5s;">
+            <div id="hero-monogram"
+                class="flex flex-col items-center justify-center animate-fade-in my-16 relative z-10"
+                style="animation-delay: 0.5s;">
                 <div class="relative inline-flex items-center justify-center">
-                    <img src="assets/calligraphy_logo.png" alt="Calligraphy Monogram" class="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-sm opacity-90 translate-x-6 md:translate-x-8">
+                    <img src="assets/calligraphy_logo.png" alt="Calligraphy Monogram"
+                        class="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-sm opacity-90 translate-x-6 md:translate-x-8">
                     <!-- Invisible targets for butterflies -->
                     <span id="riswan-r" class="absolute left-1/4 top-1/2 w-2 h-2 pointer-events-none"></span>
                     <span id="nahla-l" class="absolute right-1/4 top-1/2 w-2 h-2 pointer-events-none"></span>
@@ -340,142 +392,165 @@
                     واجمع بينهما في خير
                 </p>
             </div>
-            
+
         </section>
 
         <!-- Invitation Message & Details (Matched to Screenshot) -->
         <section class="py-8 md:py-16 w-full reveal">
-            <div class="bg-white/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-xl border border-white/60 flex flex-col items-center text-center">
-            <div id="hero-bismillah" class="mb-10">
-                <p class="font-amiri text-2xl md:text-3xl text-secondary mb-4">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-                <p class="text-[10px] md:text-xs font-cinzel text-secondary tracking-[0.15em] leading-relaxed uppercase">
-                    In the Name of Allah,<br>The Most Gracious, The Most Merciful
+            <div
+                class="bg-white/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-xl border border-white/60 flex flex-col items-center text-center">
+                <div id="hero-bismillah" class="mb-10">
+                    <p class="font-amiri text-2xl md:text-3xl text-secondary mb-4">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
+                    </p>
+                    <p
+                        class="text-[10px] md:text-xs font-cinzel text-secondary tracking-[0.15em] leading-relaxed uppercase">
+                        In the Name of Allah,<br>The Most Gracious, The Most Merciful
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h2 class="text-2xl md:text-3xl font-cinzel text-secondary tracking-[0.2em] mb-2 leading-tight">
+                        MUHAMMED<br>RISWAN</h2>
+                    <p
+                        class="text-[9px] md:text-[10px] font-cinzel text-secondary/80 tracking-[0.15em] uppercase font-semibold">
+                        S/O O.M Shareef & Mumthas</p>
+                </div>
+
+                <p class="text-2xl font-playfair text-secondary my-4 italic">&</p>
+
+                <div class="mb-8">
+                    <h2 class="text-2xl md:text-3xl font-cinzel text-secondary tracking-[0.2em] mb-2">NAHLA</h2>
+                    <p
+                        class="text-[9px] md:text-[10px] font-cinzel text-secondary/80 tracking-[0.15em] uppercase font-semibold">
+                        D/O Jamal & Sameera</p>
+                </div>
+
+                <!-- Minimalist Floral-style divider -->
+                <div class="flex items-center justify-center gap-3 my-8 opacity-60">
+                    <i class="fas fa-seedling text-sm text-secondary"></i>
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                    <i class="fas fa-seedling text-sm text-secondary transform -scale-x-100"></i>
+                </div>
+
+                <p
+                    class="font-playfair italic text-secondary text-sm md:text-base mb-10 max-w-sm mx-auto leading-relaxed">
+                    Together with their families invite you to<br>celebrate their wedding
                 </p>
-            </div>
 
-            <div class="mb-6">
-                <h2 class="text-2xl md:text-3xl font-cinzel text-secondary tracking-[0.2em] mb-2 leading-tight">MUHAMMED<br>RISWAN</h2>
-                <p class="text-[9px] md:text-[10px] font-cinzel text-secondary/80 tracking-[0.15em] uppercase font-semibold">S/O O.M Shareef & Mumthas</p>
-            </div>
+                <p class="text-lg md:text-xl font-cinzel text-secondary tracking-[0.3em] font-semibold mb-10">
+                    26 . 07 . 2026
+                </p>
 
-            <p class="text-2xl font-playfair text-secondary my-4 italic">&</p>
+                <p class="font-playfair italic text-secondary text-sm md:text-base mb-6 leading-relaxed">
+                    TMK Regency Vadakkekad,<br>Thrissur at 12 pm
+                </p>
 
-            <div class="mb-8">
-                <h2 class="text-2xl md:text-3xl font-cinzel text-secondary tracking-[0.2em] mb-2">NAHLA</h2>
-                <p class="text-[9px] md:text-[10px] font-cinzel text-secondary/80 tracking-[0.15em] uppercase font-semibold">D/O Jamal & Sameera</p>
-            </div>
+                <p class="font-playfair italic text-secondary text-sm md:text-base mb-12">
+                    Followed by lunch
+                </p>
 
-            <!-- Minimalist Floral-style divider -->
-            <div class="flex items-center justify-center gap-3 my-8 opacity-60">
-                <i class="fas fa-seedling text-sm text-secondary"></i>
-                <div class="w-16 h-[1px] bg-secondary"></div>
-                <i class="fas fa-seedling text-sm text-secondary transform -scale-x-100"></i>
-            </div>
+                <p class="text-[9px] md:text-[10px] font-cinzel text-secondary tracking-[0.2em] uppercase mb-10">
+                    With best compliments from Ridha & Razeen
+                </p>
 
-            <p class="font-playfair italic text-secondary text-sm md:text-base mb-10 max-w-sm mx-auto leading-relaxed">
-                Together with their families invite you to<br>celebrate their wedding
-            </p>
-
-            <p class="text-lg md:text-xl font-cinzel text-secondary tracking-[0.3em] font-semibold mb-10">
-                26 . 07 . 2026
-            </p>
-
-            <p class="font-playfair italic text-secondary text-sm md:text-base mb-6 leading-relaxed">
-                TMK Regency Vadakkekad,<br>Thrissur at 12 pm
-            </p>
-
-            <p class="font-playfair italic text-secondary text-sm md:text-base mb-12">
-                Reception To Follow
-            </p>
-
-            <p class="text-[9px] md:text-[10px] font-cinzel text-secondary tracking-[0.2em] uppercase mb-10">
-                With best compliments from Ridha & Razeen
-            </p>
-            
-            <a href="https://maps.app.goo.gl/placeholder" target="_blank" class="btn-luxury mt-4">
-                <i class="fas fa-location-arrow"></i>
-                View Venue
-            </a>
+                <a href="https://maps.app.goo.gl/placeholder" target="_blank" class="btn-luxury mt-4">
+                    <i class="fas fa-location-arrow"></i>
+                    View Venue
+                </a>
             </div>
         </section>
 
         <!-- Calendar & Countdown Section -->
         <section class="py-8 md:py-16 w-full reveal z-10">
-            <div class="bg-white/40 backdrop-blur-xl rounded-3xl p-6 md:p-10 shadow-xl border border-white/60 flex flex-col items-center justify-center relative w-full">
-            <!-- Top abstract heart line -->
-            <div class="w-full mb-8">
-                <svg viewBox="0 0 500 150" class="w-full h-20 text-highlight opacity-80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 30 100 Q 150 60 220 90 C 240 100 250 120 250 110 C 260 90 230 40 250 40 C 270 40 290 70 250 110 C 250 120 260 100 280 90 Q 350 60 470 100" />
-                </svg>
-            </div>
-
-            <!-- Month -->
-            <h3 class="font-cinzel text-xl md:text-2xl tracking-[0.4em] text-secondary mb-10 uppercase">July</h3>
-
-            <!-- Days Header -->
-            <div class="grid grid-cols-7 gap-x-2 w-full text-center mb-6">
-                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Thu</div>
-                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Fri</div>
-                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Sat</div>
-                <div class="font-playfair italic text-secondary font-semibold text-xs md:text-sm">Sun</div>
-                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Mon</div>
-                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Tue</div>
-                <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Wed</div>
-            </div>
-
-            <!-- Dates -->
-            <div class="grid grid-cols-7 gap-x-2 w-full text-center relative z-10 mb-2">
-                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">23</span></div>
-                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">24</span></div>
-                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">25</span></div>
-                
-                <!-- Center Date: 26 (Sunday) with Dotted Heart -->
-                <div class="relative flex justify-center items-center h-12">
-                    <svg class="absolute w-14 h-14 md:w-16 md:h-16 text-highlight" style="top: -4px;" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 4" stroke-linecap="round">
-                        <path d="M 50 85 C 50 85 15 55 15 35 C 15 15 40 15 50 35 C 60 15 85 15 85 35 C 85 55 50 85 50 85 Z" />
+            <div
+                class="bg-white/40 backdrop-blur-xl rounded-3xl p-6 md:p-10 shadow-xl border border-white/60 flex flex-col items-center justify-center relative w-full">
+                <!-- Top abstract heart line -->
+                <div class="w-full mb-8">
+                    <svg viewBox="0 0 500 150" class="w-full h-20 text-highlight opacity-80" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M 30 100 Q 150 60 220 90 C 240 100 250 120 250 110 C 260 90 230 40 250 40 C 270 40 290 70 250 110 C 250 120 260 100 280 90 Q 350 60 470 100" />
                     </svg>
-                    <span class="font-cinzel text-secondary font-bold text-lg md:text-xl relative z-10">26</span>
                 </div>
-                
-                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">27</span></div>
-                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">28</span></div>
-                <div class="flex justify-center items-center h-12"><span class="font-cinzel text-secondary text-base md:text-lg">29</span></div>
-            </div>
 
-            <!-- Hanging String (Dotted Line) -->
-            <div class="h-16 md:h-24 border-l border-dashed border-highlight/70 w-px mx-auto my-0"></div>
+                <!-- Month -->
+                <h3 class="font-cinzel text-xl md:text-2xl tracking-[0.4em] text-secondary mb-10 uppercase">July</h3>
 
-            <!-- Countdown Timer Container -->
-            <div id="countdown-container" class="w-full relative z-20 mt-4">
-                <h4 class="font-cinzel tracking-[0.2em] text-highlight text-center text-[10px] uppercase font-bold mb-5">Time Until Forever</h4>
-                <div class="flex justify-between items-center text-center gap-1 md:gap-2">
-                    <div class="flex flex-col items-center flex-1">
-                        <span id="countdown-days" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
-                        <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Days</span>
+                <!-- Days Header -->
+                <div class="grid grid-cols-7 gap-x-2 w-full text-center mb-6">
+                    <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Thu</div>
+                    <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Fri</div>
+                    <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Sat</div>
+                    <div class="font-playfair italic text-secondary font-semibold text-xs md:text-sm">Sun</div>
+                    <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Mon</div>
+                    <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Tue</div>
+                    <div class="font-playfair italic text-secondary/80 text-xs md:text-sm">Wed</div>
+                </div>
+
+                <!-- Dates -->
+                <div class="grid grid-cols-7 gap-x-2 w-full text-center relative z-10 mb-2">
+                    <div class="flex justify-center items-center h-12"><span
+                            class="font-cinzel text-secondary text-base md:text-lg">23</span></div>
+                    <div class="flex justify-center items-center h-12"><span
+                            class="font-cinzel text-secondary text-base md:text-lg">24</span></div>
+                    <div class="flex justify-center items-center h-12"><span
+                            class="font-cinzel text-secondary text-base md:text-lg">25</span></div>
+
+                    <!-- Center Date: 26 (Sunday) with Dotted Heart -->
+                    <div class="relative flex justify-center items-center h-12">
+                        <svg class="absolute w-14 h-14 md:w-16 md:h-16 text-highlight" style="top: -4px;"
+                            viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-dasharray="3 4" stroke-linecap="round">
+                            <path
+                                d="M 50 85 C 50 85 15 55 15 35 C 15 15 40 15 50 35 C 60 15 85 15 85 35 C 85 55 50 85 50 85 Z" />
+                        </svg>
+                        <span class="font-cinzel text-secondary font-bold text-lg md:text-xl relative z-10">26</span>
                     </div>
-                    <div class="font-cinzel text-xl md:text-2xl text-highlight/40 pb-3">:</div>
-                    <div class="flex flex-col items-center flex-1">
-                        <span id="countdown-hours" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
-                        <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Hrs</span>
-                    </div>
-                    <div class="font-cinzel text-xl md:text-2xl text-highlight/40 pb-3">:</div>
-                    <div class="flex flex-col items-center flex-1">
-                        <span id="countdown-mins" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
-                        <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Min</span>
-                    </div>
-                    <div class="font-cinzel text-xl md:text-2xl text-highlight/40 pb-3">:</div>
-                    <div class="flex flex-col items-center flex-1">
-                        <span id="countdown-secs" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
-                        <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Sec</span>
+
+                    <div class="flex justify-center items-center h-12"><span
+                            class="font-cinzel text-secondary text-base md:text-lg">27</span></div>
+                    <div class="flex justify-center items-center h-12"><span
+                            class="font-cinzel text-secondary text-base md:text-lg">28</span></div>
+                    <div class="flex justify-center items-center h-12"><span
+                            class="font-cinzel text-secondary text-base md:text-lg">29</span></div>
+                </div>
+
+                <!-- Hanging String (Dotted Line) -->
+                <div class="h-16 md:h-24 border-l border-dashed border-highlight/70 w-px mx-auto my-0"></div>
+
+                <!-- Countdown Timer Container -->
+                <div id="countdown-container" class="w-full relative z-20 mt-4">
+                    <h4
+                        class="font-cinzel tracking-[0.2em] text-highlight text-center text-[10px] uppercase font-bold mb-5">
+                        Time Until Forever</h4>
+                    <div class="flex justify-between items-center text-center gap-1 md:gap-2">
+                        <div class="flex flex-col items-center flex-1">
+                            <span id="countdown-days" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
+                            <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Days</span>
+                        </div>
+                        <div class="font-cinzel text-xl md:text-2xl text-highlight/40 pb-3">:</div>
+                        <div class="flex flex-col items-center flex-1">
+                            <span id="countdown-hours" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
+                            <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Hrs</span>
+                        </div>
+                        <div class="font-cinzel text-xl md:text-2xl text-highlight/40 pb-3">:</div>
+                        <div class="flex flex-col items-center flex-1">
+                            <span id="countdown-mins" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
+                            <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Min</span>
+                        </div>
+                        <div class="font-cinzel text-xl md:text-2xl text-highlight/40 pb-3">:</div>
+                        <div class="flex flex-col items-center flex-1">
+                            <span id="countdown-secs" class="font-cinzel text-2xl md:text-3xl text-secondary">00</span>
+                            <span class="font-playfair italic text-secondary/70 text-[10px] md:text-xs">Sec</span>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
 
         <!-- Groom & Bride Family Details -->
         <section class="py-8 md:py-16 flex flex-col gap-8 md:gap-12 w-full reveal">
-            
+
             <!-- Section Heading -->
             <div class="text-center mb-2">
                 <h2 class="font-greatvibes text-5xl md:text-6xl text-highlight mb-4 drop-shadow-sm">Our Families</h2>
@@ -487,25 +562,38 @@
             </div>
 
             <!-- Groom Card -->
-            <div id="groom-card" class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-6 md:p-10 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
+            <div id="groom-card"
+                class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-6 md:p-10 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
                 <!-- Subtle corner borders -->
-                <div class="absolute top-5 left-5 w-8 h-8 border-t border-l border-highlight/40 rounded-tl-2xl pointer-events-none"></div>
-                <div class="absolute top-5 right-5 w-8 h-8 border-t border-r border-highlight/40 rounded-tr-2xl pointer-events-none"></div>
-                <div class="absolute bottom-5 left-5 w-8 h-8 border-b border-l border-highlight/40 rounded-bl-2xl pointer-events-none"></div>
-                <div class="absolute bottom-5 right-5 w-8 h-8 border-b border-r border-highlight/40 rounded-br-2xl pointer-events-none"></div>
+                <div
+                    class="absolute top-5 left-5 w-8 h-8 border-t border-l border-highlight/40 rounded-tl-2xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute top-5 right-5 w-8 h-8 border-t border-r border-highlight/40 rounded-tr-2xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-5 left-5 w-8 h-8 border-b border-l border-highlight/40 rounded-bl-2xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-5 right-5 w-8 h-8 border-b border-r border-highlight/40 rounded-br-2xl pointer-events-none">
+                </div>
 
                 <div class="flex items-center justify-center gap-3 mb-6">
                     <i class="fas fa-leaf text-[8px] text-highlight opacity-70 transform -scale-x-100"></i>
-                    <h3 class="font-cinzel text-[10px] tracking-[0.3em] font-bold text-highlight uppercase">The Groom</h3>
+                    <h3 class="font-cinzel text-[10px] tracking-[0.3em] font-bold text-highlight uppercase">The Groom
+                    </h3>
                     <i class="fas fa-leaf text-[8px] text-highlight opacity-70"></i>
                 </div>
-                
-                <h2 class="font-greatvibes text-6xl md:text-[5rem] text-highlight mb-4 md:mb-6 drop-shadow-sm leading-none">Riswan</h2>
-                
+
+                <h2
+                    class="font-greatvibes text-6xl md:text-[5rem] text-highlight mb-4 md:mb-6 drop-shadow-sm leading-none">
+                    Riswan</h2>
+
                 <i class="far fa-heart text-[10px] text-highlight opacity-60 mb-6 block"></i>
-                
-                <p class="font-playfair text-secondary text-xs mb-8 tracking-wide">S/O Mr. O.M. Shareef & Mrs. Mumthas Shareef</p>
-                
+
+                <p class="font-playfair text-secondary text-xs mb-8 tracking-wide">S/O Mr. O.M. Shareef & Mrs. Mumthas
+                    Shareef</p>
+
                 <div class="flex flex-col items-center justify-center mb-6">
                     <p class="font-playfair text-highlight text-xs tracking-widest mb-3">Grandson of</p>
                     <div class="flex items-center justify-center gap-2 w-full max-w-[100px]">
@@ -514,34 +602,49 @@
                         <div class="h-px bg-highlight/40 flex-1"></div>
                     </div>
                 </div>
-                
-                <p class="font-playfair text-secondary text-xs leading-relaxed mb-8 tracking-wide">Thalikassery Moidunny Haji (Late) &<br>Thekkepattayil Moidunny</p>
-                
+
+                <p class="font-playfair text-secondary text-xs leading-relaxed mb-8 tracking-wide">Thalikassery Moidunny
+                    Haji (Late) &<br>Thekkepattayil Moidunny</p>
+
                 <i class="far fa-heart text-[10px] text-highlight opacity-60 mb-6 block"></i>
-                
-                <p class="font-playfair italic text-secondary/70 text-[11px] tracking-wide">Mundokkil House, Vylathur P.O.</p>
+
+                <p class="font-playfair italic text-secondary/70 text-[11px] tracking-wide">Mundokkil House, Vylathur
+                    P.O.</p>
             </div>
 
             <!-- Bride Card -->
-            <div id="bride-card" class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-6 md:p-10 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
+            <div id="bride-card"
+                class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-6 md:p-10 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
                 <!-- Subtle corner borders -->
-                <div class="absolute top-5 left-5 w-8 h-8 border-t border-l border-highlight/40 rounded-tl-2xl pointer-events-none"></div>
-                <div class="absolute top-5 right-5 w-8 h-8 border-t border-r border-highlight/40 rounded-tr-2xl pointer-events-none"></div>
-                <div class="absolute bottom-5 left-5 w-8 h-8 border-b border-l border-highlight/40 rounded-bl-2xl pointer-events-none"></div>
-                <div class="absolute bottom-5 right-5 w-8 h-8 border-b border-r border-highlight/40 rounded-br-2xl pointer-events-none"></div>
+                <div
+                    class="absolute top-5 left-5 w-8 h-8 border-t border-l border-highlight/40 rounded-tl-2xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute top-5 right-5 w-8 h-8 border-t border-r border-highlight/40 rounded-tr-2xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-5 left-5 w-8 h-8 border-b border-l border-highlight/40 rounded-bl-2xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-5 right-5 w-8 h-8 border-b border-r border-highlight/40 rounded-br-2xl pointer-events-none">
+                </div>
 
                 <div class="flex items-center justify-center gap-3 mb-6">
                     <i class="fas fa-leaf text-[8px] text-highlight opacity-70 transform -scale-x-100"></i>
-                    <h3 class="font-cinzel text-[10px] tracking-[0.3em] font-bold text-highlight uppercase">The Bride</h3>
+                    <h3 class="font-cinzel text-[10px] tracking-[0.3em] font-bold text-highlight uppercase">The Bride
+                    </h3>
                     <i class="fas fa-leaf text-[8px] text-highlight opacity-70"></i>
                 </div>
-                
-                <h2 class="font-greatvibes text-6xl md:text-[5rem] text-highlight mb-4 md:mb-6 drop-shadow-sm leading-none">Nahla</h2>
-                
+
+                <h2
+                    class="font-greatvibes text-6xl md:text-[5rem] text-highlight mb-4 md:mb-6 drop-shadow-sm leading-none">
+                    Nahla</h2>
+
                 <i class="far fa-heart text-[10px] text-highlight opacity-60 mb-6 block"></i>
-                
-                <p class="font-playfair text-secondary text-xs mb-8 tracking-wide">D/O Mr. Jamal & Mrs. Sameera Jamal</p>
-                
+
+                <p class="font-playfair text-secondary text-xs mb-8 tracking-wide">D/O Mr. Jamal & Mrs. Sameera Jamal
+                </p>
+
                 <div class="flex flex-col items-center justify-center mb-6">
                     <p class="font-playfair text-highlight text-xs tracking-widest mb-3">Granddaughter of</p>
                     <div class="flex items-center justify-center gap-2 w-full max-w-[100px]">
@@ -550,19 +653,58 @@
                         <div class="h-px bg-highlight/40 flex-1"></div>
                     </div>
                 </div>
-                
-                <p class="font-playfair text-secondary text-xs leading-relaxed mb-8 tracking-wide">Pokkulangara Abdul Rahman Haji (Late) &<br>Attoorayil Kader Haji (Late)</p>
-                
+
+                <p class="font-playfair text-secondary text-xs leading-relaxed mb-8 tracking-wide">Pokkulangara Abdul
+                    Rahman Haji (Late) &<br>Attoorayil Kader Haji (Late)</p>
+
                 <i class="far fa-heart text-[10px] text-highlight opacity-60 mb-6 block"></i>
-                
-                <p class="font-playfair italic text-secondary/70 text-[11px] tracking-wide">Vettissery House, Punnayur P.O.</p>
+
+                <p class="font-playfair italic text-secondary/70 text-[11px] tracking-wide">Vettissery House, Punnayur
+                    P.O.</p>
+            </div>
             </div>
         </section>
 
+        <!-- Nikah Card -->
+        <section class="py-8 md:py-16 w-full reveal">
+            <div id="nikah-card"
+                class="relative bg-white/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 text-center shadow-[0_12px_40px_rgb(0,0,0,0.1)] border border-white/60 overflow-hidden">
+                <!-- Subtle corner borders -->
+                <div
+                    class="absolute top-5 left-5 w-8 h-8 border-t border-l border-highlight/40 rounded-tl-2xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute top-5 right-5 w-8 h-8 border-t border-r border-highlight/40 rounded-tr-2xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-5 left-5 w-8 h-8 border-b border-l border-highlight/40 rounded-bl-2xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-5 right-5 w-8 h-8 border-b border-r border-highlight/40 rounded-br-2xl pointer-events-none">
+                </div>
+
+                <i class="far fa-heart text-2xl md:text-3xl text-highlight mb-6 block"></i>
+                
+                <h2 class="font-greatvibes text-6xl md:text-[5rem] text-highlight mb-6 drop-shadow-sm">Nikah</h2>
+                
+                <h3 class="font-cinzel text-sm md:text-base tracking-[0.4em] text-secondary/80 mb-6 uppercase">Saturday</h3>
+                
+                <p class="font-playfair text-3xl md:text-4xl text-secondary mb-8">25 July 2026</p>
+                
+                <div class="flex items-center justify-center gap-3 w-full max-w-[120px] mx-auto mb-8">
+                    <div class="h-px bg-highlight/60 flex-1"></div>
+                    <div class="w-1.5 h-1.5 bg-highlight/60 transform rotate-45"></div>
+                    <div class="h-px bg-highlight/60 flex-1"></div>
+                </div>
+                
+                <p class="font-playfair italic text-secondary/80 text-sm md:text-base">Solemnised in the company of close family</p>
+            </div>
+        </section>
 
         <!-- Quran Verse -->
         <section class="py-8 md:py-16 w-full reveal">
-            <div class="bg-white/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-xl border border-white/60 text-center">
+            <div
+                class="bg-white/40 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-xl border border-white/60 text-center">
                 <p class="text-secondary/90 italic font-light text-sm md:text-base leading-relaxed mb-6 font-playfair">
                     "And among His signs is that He created for you mates from among yourselves that you may find
                     tranquility in them, and He placed between you affection and mercy."
@@ -587,25 +729,25 @@
             function update() {
                 const now = new Date().getTime();
                 const distance = targetDate - now;
-                
+
                 if (distance < 0) {
                     if (containerEl) {
                         containerEl.innerHTML = '<div class="w-full text-center font-greatvibes text-3xl text-highlight mt-2">The Day is Here!</div>';
                     }
                     return;
                 }
-                
+
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
+
                 if (daysEl) daysEl.innerText = days;
                 if (hoursEl) hoursEl.innerText = hours.toString().padStart(2, '0');
                 if (minsEl) minsEl.innerText = minutes.toString().padStart(2, '0');
                 if (secsEl) secsEl.innerText = seconds.toString().padStart(2, '0');
             }
-            
+
             setInterval(update, 1000);
             update();
         }
@@ -619,8 +761,8 @@
             const muteBtn = document.getElementById('mute-btn');
 
             // Play music
-            bgMusic.play().catch(e => {});
-            
+            bgMusic.play().catch(e => { });
+
             // Show mute button
             muteBtn.classList.remove('hidden');
 
@@ -642,7 +784,7 @@
         document.getElementById('mute-btn').addEventListener('click', function () {
             const bgMusic = document.getElementById('bg-music');
             const muteIcon = document.getElementById('mute-icon');
-            
+
             if (bgMusic.muted) {
                 bgMusic.muted = false;
                 muteIcon.classList.remove('fa-volume-mute');
@@ -687,7 +829,7 @@
             for (let i = 0; i < numButterflies; i++) {
                 const b = document.createElement('div');
                 b.className = 'butterfly-container';
-                
+
                 const size = 0.5 + Math.random() * 0.8; // random scale 0.5 to 1.3
                 const flapSpeed = 0.08 + Math.random() * 0.1;
 
@@ -722,12 +864,12 @@
             function updateButterflies() {
                 const currentDocWidth = window.innerWidth;
                 const currentDocHeight = window.innerHeight;
-                
+
                 const riswanEl = document.getElementById('riswan-r');
                 const nahlaEl = document.getElementById('nahla-l');
                 const groomCardEl = document.getElementById('groom-card');
                 const brideCardEl = document.getElementById('bride-card');
-                
+
                 let riswanRect = null;
                 if (riswanEl && riswanEl.offsetParent !== null) {
                     riswanRect = riswanEl.getBoundingClientRect();
@@ -793,7 +935,7 @@
 
                             let dx = b.tx - b.x;
                             let dy = b.ty - b.y;
-                            let dist = Math.sqrt(dx*dx + dy*dy);
+                            let dist = Math.sqrt(dx * dx + dy * dy);
 
                             if (dist < 10) {
                                 // Landed!
@@ -805,14 +947,14 @@
                             } else {
                                 b.vx += (dx / dist) * 0.15;
                                 b.vy += (dy / dist) * 0.15;
-                                
+
                                 // Smoother wandering while targeting
                                 if (Math.random() < 0.1) {
                                     b.vx += (Math.random() - 0.5) * 1.0;
                                     b.vy += (Math.random() - 0.5) * 1.0;
                                 }
 
-                                const speed = Math.sqrt(b.vx*b.vx + b.vy*b.vy);
+                                const speed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
                                 if (speed > 4) {
                                     b.vx = (b.vx / speed) * 4;
                                     b.vy = (b.vy / speed) * 4;
@@ -852,8 +994,8 @@
                         // Calculate direction to target
                         let dx = b.tx - b.x;
                         let dy = b.ty - b.y;
-                        let dist = Math.sqrt(dx*dx + dy*dy);
-                        
+                        let dist = Math.sqrt(dx * dx + dy * dy);
+
                         if (dist > 0) {
                             b.vx += (dx / dist) * 0.05;
                             b.vy += (dy / dist) * 0.05;
@@ -866,7 +1008,7 @@
                         }
 
                         // Limit speed
-                        const speed = Math.sqrt(b.vx*b.vx + b.vy*b.vy);
+                        const speed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
                         if (speed > 4) {
                             b.vx = (b.vx / speed) * 4;
                             b.vy = (b.vy / speed) * 4;
@@ -888,9 +1030,9 @@
                         targetAngle = Math.atan2(b.vy, b.vx) * (180 / Math.PI) + 90;
                     } else if (b.state === 'sitting') {
                         // Slowly turn upwards when sitting (looks natural for butterflies)
-                        targetAngle = 0; 
+                        targetAngle = 0;
                     }
-                    
+
                     if (b.angle === undefined) {
                         b.angle = targetAngle;
                     }
@@ -899,17 +1041,17 @@
                     let angleDiff = targetAngle - b.angle;
                     while (angleDiff > 180) angleDiff -= 360;
                     while (angleDiff < -180) angleDiff += 360;
-                    
+
                     b.angle += angleDiff * 0.1;
 
                     b.el.style.transform = `translate(${b.x}px, ${b.y}px) rotate(${b.angle}deg) scale(${b.size})`;
                 });
                 requestAnimationFrame(updateButterflies);
             }
-            
+
             updateButterflies();
         }
-        
+
         // Initialize butterflies
         initButterflies();
     </script>
